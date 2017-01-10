@@ -1,0 +1,410 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 22/06/2016 15:07
+  	*/
+	
+	@font-face {
+	  font-family: "zodiac";
+	  src: url("./Flaticon.eot");
+	  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"), url("./Flaticon.woff") format("woff"), url("./Flaticon.ttf") format("truetype"), url("./Flaticon.svg#Zodiac") format("svg");
+	  font-weight: normal;
+	  font-style: normal;
+	}
+	
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+	  @font-face {
+	    font-family: "zodiac";
+	    src: url("./Flaticon.svg#zodiac") format("svg");
+	  }
+	}
+	
+	[class^="zodiac-"]:before, [class*=" zodiac-"]:before, [class^="zodiac-"]:after, [class*=" zodiac-"]:after {
+	  font-family: "zodiac";
+	  font-size: 20px;
+	  font-style: normal;
+	  margin-left: 20px;
+	}
+	
+	.zodiac-aquarius:before {
+	  content: "\f100";
+	}
+	
+	.zodiac-aquarius-astrological-sign-symbol:before {
+	  content: "\f101";
+	}
+	
+	.zodiac-aquarius-astrological-sign-symbol-1:before {
+	  content: "\f102";
+	}
+	
+	.zodiac-aquarius-sign-symbol:before {
+	  content: "\f103";
+	}
+	
+	.zodiac-aquarius-water-container-symbol:before {
+	  content: "\f104";
+	}
+	
+	.zodiac-aquarius-zodiac-sign-symbol:before {
+	  content: "\f105";
+	}
+	
+	.zodiac-aquarius-zodiac-sign-symbol-1:before {
+	  content: "\f106";
+	}
+	
+	.zodiac-aquarius-zodiac-symbol-of-female-water-carrier:before {
+	  content: "\f107";
+	}
+	
+	.zodiac-aries:before {
+	  content: "\f108";
+	}
+	
+	.zodiac-aries-1:before {
+	  content: "\f109";
+	}
+	
+	.zodiac-aries-bull-head-front-shape-symbol:before {
+	  content: "\f10a";
+	}
+	
+	.zodiac-aries-sign:before {
+	  content: "\f10b";
+	}
+	
+	.zodiac-aries-sign-with-big-horns:before {
+	  content: "\f10c";
+	}
+	
+	.zodiac-aries-symbol:before {
+	  content: "\f10d";
+	}
+	
+	.zodiac-aries-zodiac-sign-symbol:before {
+	  content: "\f10e";
+	}
+	
+	.zodiac-aries-zodiac-symbol-of-frontal-goat-head:before {
+	  content: "\f10f";
+	}
+	
+	.zodiac-cancer:before {
+	  content: "\f110";
+	}
+	
+	.zodiac-cancer-1:before {
+	  content: "\f111";
+	}
+	
+	.zodiac-cancer-astrological-sign-of-crab-silhouette:before {
+	  content: "\f112";
+	}
+	
+	.zodiac-cancer-astrological-symbol:before {
+	  content: "\f113";
+	}
+	
+	.zodiac-cancer-zodiac-sign-of-a-crab:before {
+	  content: "\f114";
+	}
+	
+	.zodiac-cancer-zodiac-sign-symbol:before {
+	  content: "\f115";
+	}
+	
+	.zodiac-capricorn:before {
+	  content: "\f116";
+	}
+	
+	.zodiac-capricorn-1:before {
+	  content: "\f117";
+	}
+	
+	.zodiac-capricorn-2:before {
+	  content: "\f118";
+	}
+	
+	.zodiac-capricorn-3:before {
+	  content: "\f119";
+	}
+	
+	.zodiac-capricorn-astrological-sign-of-head-black-silhouette-with-horns:before {
+	  content: "\f11a";
+	}
+	
+	.zodiac-capricorn-goat-animal-shape-of-zodiac-sign:before {
+	  content: "\f11b";
+	}
+	
+	.zodiac-capricorn-sign:before {
+	  content: "\f11c";
+	}
+	
+	.zodiac-capricorn-symbol-with-big-horn:before {
+	  content: "\f11d";
+	}
+	
+	.zodiac-crab-cancer-symbol:before {
+	  content: "\f11e";
+	}
+	
+	.zodiac-crab-symbol-for-zodiac-cancer-sign:before {
+	  content: "\f11f";
+	}
+	
+	.zodiac-gemini-female-twins-couple-symbol:before {
+	  content: "\f120";
+	}
+	
+	.zodiac-gemini-male-twins-zodiac-sign-symbol:before {
+	  content: "\f121";
+	}
+	
+	.zodiac-gemini-sign-of-zodiac:before {
+	  content: "\f122";
+	}
+	
+	.zodiac-gemini-twins-symbol:before {
+	  content: "\f123";
+	}
+	
+	.zodiac-gemini-twins-symbol-1:before {
+	  content: "\f124";
+	}
+	
+	.zodiac-gemini-two-twins-heads-symbol:before {
+	  content: "\f125";
+	}
+	
+	.zodiac-gemini-zodiac-sign-symbol:before {
+	  content: "\f126";
+	}
+	
+	.zodiac-gemini-zodiac-symbol-of-two-twins-faces:before {
+	  content: "\f127";
+	}
+	
+	.zodiac-leo:before {
+	  content: "\f128";
+	}
+	
+	.zodiac-leo-astrological-sign:before {
+	  content: "\f129";
+	}
+	
+	.zodiac-leo-head-front-symbol-of-zodiac-sign:before {
+	  content: "\f12a";
+	}
+	
+	.zodiac-leo-lion-astrological-symbol:before {
+	  content: "\f12b";
+	}
+	
+	.zodiac-leo-lion-head-side:before {
+	  content: "\f12c";
+	}
+	
+	.zodiac-leo-sign:before {
+	  content: "\f12d";
+	}
+	
+	.zodiac-leo-zodiac-sign-symbol:before {
+	  content: "\f12e";
+	}
+	
+	.zodiac-leo-zodiac-symbol-of-lion-head-from-side-view:before {
+	  content: "\f12f";
+	}
+	
+	.zodiac-libra-astrological-symbol-of-a-scale:before {
+	  content: "\f130";
+	}
+	
+	.zodiac-libra-balanced-scale-symbol:before {
+	  content: "\f131";
+	}
+	
+	.zodiac-libra-balanced-scale-zodiac-symbol:before {
+	  content: "\f132";
+	}
+	
+	.zodiac-libra-scale-balance-symbol:before {
+	  content: "\f133";
+	}
+	
+	.zodiac-libra-sign:before {
+	  content: "\f134";
+	}
+	
+	.zodiac-libra-sign-1:before {
+	  content: "\f135";
+	}
+	
+	.zodiac-libra-zodiac-symbol-of-balance:before {
+	  content: "\f136";
+	}
+	
+	.zodiac-libra-zodiac-symbol-of-balanced-scale:before {
+	  content: "\f137";
+	}
+	
+	.zodiac-pisces:before {
+	  content: "\f138";
+	}
+	
+	.zodiac-pisces-astrological-sign:before {
+	  content: "\f139";
+	}
+	
+	.zodiac-pisces-astrological-sign-symbol:before {
+	  content: "\f13a";
+	}
+	
+	.zodiac-pisces-astrological-sign-symbol-of-two-fishes:before {
+	  content: "\f13b";
+	}
+	
+	.zodiac-pisces-fishes:before {
+	  content: "\f13c";
+	}
+	
+	.zodiac-pisces-fishes-shapes-sign:before {
+	  content: "\f13d";
+	}
+	
+	.zodiac-pisces-sign:before {
+	  content: "\f13e";
+	}
+	
+	.zodiac-pisces-zodiac-sign:before {
+	  content: "\f13f";
+	}
+	
+	.zodiac-sagittarius:before {
+	  content: "\f140";
+	}
+	
+	.zodiac-sagittarius-arch-and-arrow-symbol:before {
+	  content: "\f141";
+	}
+	
+	.zodiac-sagittarius-archer-symbol:before {
+	  content: "\f142";
+	}
+	
+	.zodiac-sagittarius-arrow-sign:before {
+	  content: "\f143";
+	}
+	
+	.zodiac-sagittarius-sign:before {
+	  content: "\f144";
+	}
+	
+	.zodiac-sagittarius-sign-of-an-archer:before {
+	  content: "\f145";
+	}
+	
+	.zodiac-sagittarius-sign-symbol:before {
+	  content: "\f146";
+	}
+	
+	.zodiac-sagittarius-zodiac-symbol:before {
+	  content: "\f147";
+	}
+	
+	.zodiac-scorpio:before {
+	  content: "\f148";
+	}
+	
+	.zodiac-scorpio-1:before {
+	  content: "\f149";
+	}
+	
+	.zodiac-scorpio-vertical-animal-shape-of-zodiac-symbol:before {
+	  content: "\f14a";
+	}
+	
+	.zodiac-scorpio-zodiac-symbol:before {
+	  content: "\f14b";
+	}
+	
+	.zodiac-scorpion-astrological-sign:before {
+	  content: "\f14c";
+	}
+	
+	.zodiac-scorpion-shape:before {
+	  content: "\f14d";
+	}
+	
+	.zodiac-scorpion-shape-of-zodiac-sign:before {
+	  content: "\f14e";
+	}
+	
+	.zodiac-scorpion-sign-shape:before {
+	  content: "\f14f";
+	}
+	
+	.zodiac-taurus:before {
+	  content: "\f150";
+	}
+	
+	.zodiac-taurus-astrological-sign-symbol:before {
+	  content: "\f151";
+	}
+	
+	.zodiac-taurus-astrological-sign-symbol-1:before {
+	  content: "\f152";
+	}
+	
+	.zodiac-taurus-bull-head-symbol-for-zodiac:before {
+	  content: "\f153";
+	}
+	
+	.zodiac-taurus-bull-side-view-sign:before {
+	  content: "\f154";
+	}
+	
+	.zodiac-taurus-sign:before {
+	  content: "\f155";
+	}
+	
+	.zodiac-taurus-zodiac-sign:before {
+	  content: "\f156";
+	}
+	
+	.zodiac-taurus-zodiac-symbol-of-bull-head-front:before {
+	  content: "\f157";
+	}
+	
+	.zodiac-virgo:before {
+	  content: "\f158";
+	}
+	
+	.zodiac-virgo-astrological-sign-symbol:before {
+	  content: "\f159";
+	}
+	
+	.zodiac-virgo-astrological-symbol-sign:before {
+	  content: "\f15a";
+	}
+	
+	.zodiac-virgo-astrological-symbol-sign-1:before {
+	  content: "\f15b";
+	}
+	
+	.zodiac-virgo-female-silhouette:before {
+	  content: "\f15c";
+	}
+	
+	.zodiac-virgo-woman-head-shape-symbol:before {
+	  content: "\f15d";
+	}
+	
+	.zodiac-virgo-woman-symbol:before {
+	  content: "\f15e";
+	}
+	
+	.zodiac-virgo-zodiac-symbol:before {
+	  content: "\f15f";
+	}

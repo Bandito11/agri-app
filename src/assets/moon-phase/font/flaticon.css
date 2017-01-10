@@ -1,0 +1,134 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 22/06/2016 15:06
+  	*/
+	
+	@font-face {
+	  font-family: "moonphase";
+	  src: url("./Flaticon.eot");
+	  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"), url("./Flaticon.woff") format("woff"), url("./Flaticon.ttf") format("truetype"), url("./Flaticon.svg#moonphase") format("svg");
+	  font-weight: normal;
+	  font-style: normal;
+	}
+	
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+	  @font-face {
+	    font-family: "moonphase";
+	    src: url("./Flaticon.svg#moonphase") format("svg");
+	  }
+	}
+	
+	[class^="moonphase-"]:before, [class*=" moonphase-"]:before, [class^="moonphase-"]:after, [class*=" moonphase-"]:after {
+	  font-family: "moonphase";
+	  font-size: 20px;
+	  font-style: normal;
+	  margin-left: 20px;
+	}
+	
+	.moonphase-half-moon-phase-symbol:before {
+	  content: "\f100";
+	}
+	
+	.moonphase-moon-crescent-phase-symbol:before {
+	  content: "\f101";
+	}
+	
+	.moonphase-moon-phase:before {
+	  content: "\f102";
+	}
+	
+	.moonphase-moon-phase-1:before {
+	  content: "\f103";
+	}
+	
+	.moonphase-moon-phase-circular-weather-symbol:before {
+	  content: "\f104";
+	}
+	
+	.moonphase-moon-phase-interface-symbol:before {
+	  content: "\f105";
+	}
+	
+	.moonphase-moon-phase-symbol:before {
+	  content: "\f106";
+	}
+	
+	.moonphase-moon-phase-symbol-1:before {
+	  content: "\f107";
+	}
+	
+	.moonphase-moon-phase-symbol-10:before {
+	  content: "\f108";
+	}
+	
+	.moonphase-moon-phase-symbol-11:before {
+	  content: "\f109";
+	}
+	
+	.moonphase-moon-phase-symbol-12:before {
+	  content: "\f10a";
+	}
+	
+	.moonphase-moon-phase-symbol-13:before {
+	  content: "\f10b";
+	}
+	
+	.moonphase-moon-phase-symbol-14:before {
+	  content: "\f10c";
+	}
+	
+	.moonphase-moon-phase-symbol-15:before {
+	  content: "\f10d";
+	}
+	
+	.moonphase-moon-phase-symbol-2:before {
+	  content: "\f10e";
+	}
+	
+	.moonphase-moon-phase-symbol-3:before {
+	  content: "\f10f";
+	}
+	
+	.moonphase-moon-phase-symbol-4:before {
+	  content: "\f110";
+	}
+	
+	.moonphase-moon-phase-symbol-5:before {
+	  content: "\f111";
+	}
+	
+	.moonphase-moon-phase-symbol-6:before {
+	  content: "\f112";
+	}
+	
+	.moonphase-moon-phase-symbol-7:before {
+	  content: "\f113";
+	}
+	
+	.moonphase-moon-phase-symbol-8:before {
+	  content: "\f114";
+	}
+	
+	.moonphase-moon-phase-symbol-9:before {
+	  content: "\f115";
+	}
+	
+	.moonphase-moon-phase-symbol-with-craters:before {
+	  content: "\f116";
+	}
+	
+	.moonphase-moon-phase-symbol-with-craters-1:before {
+	  content: "\f117";
+	}
+	
+	.moonphase-moon-phase-symbol-with-craters-2:before {
+	  content: "\f118";
+	}
+	
+	.moonphase-new-moon-phase-circle:before {
+	  content: "\f119";
+	}
+	
+	.moonphase-new-moon-phase-symbol:before {
+	  content: "\f11a";
+	}

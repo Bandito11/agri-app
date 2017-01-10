@@ -1,0 +1,17 @@
+<!--<ion-header>
+	<ion-navbar>
+		<ion-title>Calendario</ion-title>
+	</ion-navbar>
+</ion-header>-->
+
+<ion-content padding class="page-calendario">
+	<calendar-component (getDate)="getDate($event)"></calendar-component>
+	<hr>
+	<h4 id="date"> {{currentWeekDay + ' ' + currentDay}} de {{currentMonth}} de {{currentYear}}
+		<span data-icon="&#xe001;" aria-hidden="true" class="{{zodiacImage}}"></span></h4>
+	<moon-phase-component [date]="date"></moon-phase-component>
+	<hr>
+	<weather-component [date]="date"></weather-component>
+	<hr>
+	<plantation-component></plantation-component>
+</ion-content>
