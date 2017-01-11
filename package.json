@@ -2,7 +2,6 @@
   "name": "agri-app",
   "author": "Esteban Morales",
   "version": "0.0.6",
-  "homepage": "http://esteban-morales.tk",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -39,5 +38,13 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-splashscreen"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [],
+  "bugs": {
+    "url": "https://github.com/Bandito11/agri-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bandito11/agri-app.git"
+  },
+  "homepage": "https://github.com/Bandito11/agri-app#readme"
 }
