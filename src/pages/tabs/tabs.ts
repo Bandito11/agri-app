@@ -7,10 +7,9 @@ import { ForoPage } from '../foro/foro';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  tab1Root: any = MainPage;
-  tab2Root: any = ForoPage;
+
+  main: any = MainPage;
+  forum: any = ForoPage;
 
   constructor() {
 

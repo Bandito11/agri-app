@@ -15,24 +15,24 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
     constructor(private moonPhaseService: MoonPhaseService) { }
 
     @Input() date: iCalendar;
-    //moonphase html properties
+    /**moonphase html properties*/
     moonPhaseImage: string;
-    //Sets the moon phase from the date picked by the user
+    /**Sets the moon phase from the date picked by the user*/
     moonPhaseName: string;
-    //Set the date of the next full moon
+    /**Set the date of the next full moon*/
     fullMoon: string;
 
     ngOnInit() {
-        this.getMoonPhaseName(this.date);
+        this.getMoonPhase(this.date);
     }
 
     ngOnChanges(changes) {
-        this.getMoonPhaseName(changes.date.currentValue);
+        this.getMoonPhase(changes.date.currentValue);
     }
-
-    getMoonPhaseName(date: iCalendar) {
+/**Returns the current moonphase  */
+    getMoonPhase(date: iCalendar) {
         this.moonPhaseService
-            .getMoonPhaseInfo(date)
+            .getMoonPhase(date)
             .then(api => {
                 this.moonPhaseName = api.phase;
                 this.moonPhaseImage = api.icon;

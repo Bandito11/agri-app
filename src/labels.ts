@@ -1,5 +1,4 @@
-
-//Used to panel weekdays name in calendar
+/**Used to panel weekdays name in calendar*/
 export const weekDaysLabels = [
   'Dom',
   'Lun',
@@ -9,7 +8,8 @@ export const weekDaysLabels = [
   'Vie',
   'Sab'
 ];
-//Used to show the current weekday in the ion card
+
+/**Used to show the current day of the week in the header*/
 export const weekDaysHeader = [
   'Domingo',
   'Lunes',
@@ -19,7 +19,8 @@ export const weekDaysHeader = [
   'Viernes',
   'Sábado'
 ];
-//Used to label the month in calendar.
+
+/**Used to label the month in calendar*/
 export const monthsLabels = [
   'Enero',
   'Febrero',

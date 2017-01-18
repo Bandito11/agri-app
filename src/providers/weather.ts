@@ -11,7 +11,7 @@ export class WeatherService {
 
   constructor(private http: Http) { }
 
-  //Get coordinates from device
+  /**Get coordinates from device*/
   getCoords(): Promise<iCoordinate> {
     return Geolocation.getCurrentPosition().then((resp) => {
       let location: iCoordinate = { longitude: 0, latitude: 0 };
@@ -22,8 +22,8 @@ export class WeatherService {
       .catch(err => this.handleError(err));
   }
 
-  //Get weather info from api
-  getWeatherSummary(date: iCalendar): Promise<iWeather> {
+  /**Get weather summary*/
+  getWeather(date: iCalendar): Promise<iWeather> {
     return this.getCoords().then(location => {
     let url = "http://localhost:3000";
     let query = "/weather/" + date.year + '&' + date.month + '&' + date.day + '&' + location.latitude + '&' + location.longitude;

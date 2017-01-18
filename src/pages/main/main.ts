@@ -17,15 +17,22 @@ export class MainPage {
 
   constructor(private navCtrl: NavController) { }
 
-  // main html properties
+  /** weekDaysHeader html properties*/
   weekDaysHeader: string[] = weekDaysHeader;
+  /** currentMonth html properties*/
   currentMonth: string;
+  /** currentDay html properties*/
   currentDay: number;
+  /** currentYear html properties*/
   currentYear: number;
+  /** currentWeekDay html properties*/
   currentWeekDay: string;
+  /** date html properties*/
   date: iCalendar;
+  /** zodiacImage html properties*/
   zodiacImage: string;
 
+/**Get the current date */
   getDate(date: iCalendar) {
     this.date = date;
     this.currentDay = date.day;
@@ -35,6 +42,7 @@ export class MainPage {
     this.setZodiac(date);
   }
 
+/** Set the image string for the zodiac*/
   setZodiac(date: iCalendar) {
     switch (date.month) {
       case 0:

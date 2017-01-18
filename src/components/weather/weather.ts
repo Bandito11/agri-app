@@ -17,14 +17,21 @@ export class WeatherComponent implements OnInit, OnChanges {
     constructor(private weatherService: WeatherService) { }
 
     @Input() date: iCalendar;
-    //weather html properties
+    /**currentTempIcon html properties*/
     currentTempIcon: string;
+    /**currentTemp html properties*/
     currentTemp: string;
+    /**currentLocation html properties*/
     currentLocation: string;
+    /**weatherState html properties*/
     weatherState: string; //Weather brief description
+    /**precipitation html properties*/
     precipitation: string;
+    /**humidity html properties*/
     humidity: string;
+    /**pressure html properties*/
     pressure: string;
+    /**wind html properties*/
     wind: string;
 
     ngOnInit() {
@@ -34,14 +41,14 @@ export class WeatherComponent implements OnInit, OnChanges {
     ngOnChanges(changes) {
         this.getWeather(changes.date.currentValue);
     }
-
+/**Returns the summary of the current weather for the date given */
     getWeather(date: iCalendar) {
         //TODO:
         //Make an icon array for each possible weather state
         //make an array of possible weather states
-        this.weatherService.getWeatherSummary(date)
+        this.weatherService.getWeather(date)
             .then(api => {
-                this.currentLocation = api.location.slice(1, api.location.length);
+                this.currentLocation = api.location;
                 this.currentTempIcon = api.icon;
                 this.currentTemp = api.temp;
                 this.weatherState = api.weatherState;

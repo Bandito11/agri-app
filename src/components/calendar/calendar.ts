@@ -13,20 +13,28 @@ export class CalendarComponent implements OnInit {
 
   constructor(public alertCtrl: AlertController) { }
 
-  //weather html properties
-  weekDaysHeader: string[];
-  weekDaysLabels: string[];
-  monthsLabels: string[];
+  /**weekDaysHeader html properties*/
+  weekDaysHeader: Array<string>;
 
-  //Used to get the month and year to start the calendar
+  /**weekDaysLabels html properties*/
+  weekDaysLabels: Array<string>;
+
+  /**monthsLabels html properties*/
+  monthsLabels: Array<string>;
+
+  /**Used to get the month and year to start the calendar*/
   month: number;
+
+  /**Used to get the year to start the calendar*/
   year: number;
 
-  //Date chosen by the user to be shown in the card Header
+  /**Date chosen by the user to be shown in the card Header*/
   @Output() getDate = new EventEmitter();
 
-  //Used to generate Calendar 
-  calendarDays: iCalendar[] = [];
+  /**Used to generate calendar*/
+  calendarDays: Array<iCalendar> = [];
+
+  /**Used to generate Calendar*/
   currentDate = new Date();
 
   ngOnInit() {
@@ -34,7 +42,7 @@ export class CalendarComponent implements OnInit {
     this.initialize();
   }
 
-  //Initialize Labels and headers in order to generate the calendar and the output for the header
+  /**Initialize the labels and headers in order to generate the calendar and the output for the header*/
   private initialize() {
     this.weekDaysLabels = weekDaysLabels;
     this.monthsLabels = monthsLabels;
@@ -48,17 +56,18 @@ export class CalendarComponent implements OnInit {
       });
   }
 
-  //When the day is chosen, load the data from the db using the date as
-  //a parameter. 
+  /**When the day is chosen, load the data from the db using the date as a parameter. */
   private choseDay(date: iCalendar) {
     this.getDate.emit(date);
   }
 
-  //Create the calendar by passing the month and the year. When starting the app the null values 
-  //will be passed for the month and year parameters, but when changing to a previous month or one 
-  //next in the list a month and year will be passed. 
+  /**
+   * Create the calendar by passing the month and the year. When starting the app the null values
+   * will be passed for the month and year parameters, but when changing to a previous month or one
+   * next in the list a month and year will be passed. 
+   */
   private createCalendar(month, year) {
-    //Month max day in the calendar. 
+    //Max days for the months in the Gregorian calendar. 
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     this.calendarDays = [];
     this.month = (isNaN(month) || month == null) ? this.currentDate.getMonth() : month;
@@ -66,23 +75,26 @@ export class CalendarComponent implements OnInit {
     let firstDay = new Date(this.year, this.month, 1);
     let startingDay = firstDay.getDay();
     let monthsLength = daysInMonth[this.month];
-    if (this.month == 1) {//Only February Leap Years
+    if (this.month == 1) { //Only February Leap Years
       if ((this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0) {
         monthsLength = 29;
       }
     }
     for (let i = 1 - startingDay; i <= monthsLength; i++) {
       if (i > 0) {
-        this.calendarDays.push(
-          {
-            weekDay: new Date(this.year, this.month, i).getDay(),
-            day: i,
-            month: this.month,
-            year: this.year
-          }
-        );
+        this.calendarDays.push({
+          weekDay: new Date(this.year, this.month, i).getDay(),
+          day: i,
+          month: this.month,
+          year: this.year
+        });
       } else {
-        this.calendarDays.push({ weekDay: null, day: null, month: null, year: null });
+        this.calendarDays.push({
+          weekDay: null,
+          day: null,
+          month: null,
+          year: null
+        });
       }
     }
   }

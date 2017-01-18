@@ -11,8 +11,8 @@ export class MoonPhaseService {
 
   constructor(public http: Http, private weatherService: WeatherService) { }
 
-  //Will return the response from Aeris Weather
-  getMoonPhaseInfo(date: iCalendar): Promise<iMoonPhase> {
+  /**Will return the moonphase*/
+  getMoonPhase(date: iCalendar): Promise<iMoonPhase> {
     return this.weatherService.getCoords().then(location => {
       let url: string = "http://localhost:3000";
       let query = '/moonphase/' + date.year + '&' + date.month + '&' + date.day + '&' + location.latitude + '&' + location.longitude;

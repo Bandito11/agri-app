@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
 /*
-  Generated class for the Plantation component.
+  Generated class for the Crops component.
 
   See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
   for more info on Angular 2 Components.
 */
 @Component({
-    selector: 'plantation-component',
-    templateUrl: 'plantation.html'
+    selector: 'crops-component',
+    templateUrl: 'crops.html'
 })
-export class PlantationComponent implements OnInit {
+export class CropsComponent implements OnInit {
 
     constructor() { }
 
-    //plants list
-    plantation: string[];
+    /**List of crops */
+    crops: string[];
 
     ngOnInit() {
-        this.plantation = plantation;
+        this.crops = crops;
     }
 }
 
@@ -27,7 +27,7 @@ export class PlantationComponent implements OnInit {
 /// Only used for test purposes. It will be deleted./////
 ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
-export let plantation = [
+export let crops = [
     'Berenjena',
     'Cebollas'
 ]
