@@ -11,7 +11,9 @@ import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../..//labels'
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(public alertCtrl: AlertController) { }
+  constructor(public alertCtrl: AlertController) {
+     this.currentDate = new Date();
+  }
 
   /**weekDaysHeader html properties*/
   weekDaysHeader: Array<string>;
@@ -35,7 +37,7 @@ export class CalendarComponent implements OnInit {
   calendarDays: Array<iCalendar> = [];
 
   /**Used to generate Calendar*/
-  currentDate = new Date();
+  currentDate;
 
   ngOnInit() {
     this.createCalendar(null, null);
@@ -47,13 +49,12 @@ export class CalendarComponent implements OnInit {
     this.weekDaysLabels = weekDaysLabels;
     this.monthsLabels = monthsLabels;
     this.weekDaysHeader = weekDaysHeader;
-    this.choseDay(
-      {
-        weekDay: this.currentDate.getDay(),
-        day: this.currentDate.getDate(),
-        year: this.currentDate.getFullYear(),
-        month: this.currentDate.getMonth()
-      });
+    let date:iCalendar = () => {};
+    date.weekDay = this.currentDate.getDay();
+    date.day = this.currentDate.getDate();
+    date.year = this.currentDate.getFullYear();
+    date.month = this.currentDate.getMonth();
+    this.choseDay(date);
   }
 
   /**When the day is chosen, load the data from the db using the date as a parameter. */
@@ -67,6 +68,7 @@ export class CalendarComponent implements OnInit {
    * next in the list a month and year will be passed. 
    */
   private createCalendar(month, year) {
+    let date:iCalendar = () => {};
     //Max days for the months in the Gregorian calendar. 
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     this.calendarDays = [];
@@ -82,19 +84,17 @@ export class CalendarComponent implements OnInit {
     }
     for (let i = 1 - startingDay; i <= monthsLength; i++) {
       if (i > 0) {
-        this.calendarDays.push({
-          weekDay: new Date(this.year, this.month, i).getDay(),
-          day: i,
-          month: this.month,
-          year: this.year
-        });
+         date.weekDay = new Date(this.year, this.month, i).getDay();
+         date.day = i;
+         date.year = this.year;
+         date.month = this.month;
+        this.calendarDays.push(date);
       } else {
-        this.calendarDays.push({
-          weekDay: null,
-          day: null,
-          month: null,
-          year: null
-        });
+        date.weekDay = null;
+        date.day = null;
+        date.month = null;
+        date.year = null;
+        this.calendarDays.push(date);
       }
     }
   }
