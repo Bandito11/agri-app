@@ -12,7 +12,7 @@ import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../..//labels'
 export class CalendarComponent implements OnInit {
 
   constructor(public alertCtrl: AlertController) {
-     this.currentDate = new Date();
+    this.currentDate = new Date();
   }
 
   /**weekDaysHeader html properties*/
@@ -49,11 +49,12 @@ export class CalendarComponent implements OnInit {
     this.weekDaysLabels = weekDaysLabels;
     this.monthsLabels = monthsLabels;
     this.weekDaysHeader = weekDaysHeader;
-    let date:iCalendar = () => {};
-    date.weekDay = this.currentDate.getDay();
-    date.day = this.currentDate.getDate();
-    date.year = this.currentDate.getFullYear();
-    date.month = this.currentDate.getMonth();
+    let date: iCalendar = {
+      weekDay: this.currentDate.getDay(),
+      day: this.currentDate.getDate(),
+      year: this.currentDate.getFullYear(),
+      month: this.currentDate.getMonth()
+    };
     this.choseDay(date);
   }
 
@@ -68,7 +69,7 @@ export class CalendarComponent implements OnInit {
    * next in the list a month and year will be passed. 
    */
   private createCalendar(month, year) {
-    let date:iCalendar = () => {};
+    let date: iCalendar = { weekDay: 0, day: 0, month: 0, year: 0 };
     //Max days for the months in the Gregorian calendar. 
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     this.calendarDays = [];
@@ -84,10 +85,10 @@ export class CalendarComponent implements OnInit {
     }
     for (let i = 1 - startingDay; i <= monthsLength; i++) {
       if (i > 0) {
-         date.weekDay = new Date(this.year, this.month, i).getDay();
-         date.day = i;
-         date.year = this.year;
-         date.month = this.month;
+        date.weekDay = new Date(this.year, this.month, i).getDay();
+        date.day = i;
+        date.year = this.year;
+        date.month = this.month;
         this.calendarDays.push(date);
       } else {
         date.weekDay = null;
