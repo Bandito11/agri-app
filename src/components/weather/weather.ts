@@ -56,7 +56,6 @@ export class WeatherComponent implements OnInit, OnChanges {
                 this.humidity = api.humidity;
                 this.wind = api.wind;
                 this.pressure = api.pressure;
-
             }).catch(err => this.handleError(err));
     }
 
