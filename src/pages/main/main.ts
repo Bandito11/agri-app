@@ -15,10 +15,12 @@ import { weekDaysHeader, monthsLabels } from './../../labels'
 })
 export class MainPage {
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController) { 
+     this.weekDaysHeader = weekDaysHeader;
+  }
 
   /** weekDaysHeader html properties*/
-  weekDaysHeader: string[] = weekDaysHeader;
+  weekDaysHeader: string[];
   /** currentMonth html properties*/
   currentMonth: string;
   /** currentDay html properties*/
