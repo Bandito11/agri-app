@@ -12,9 +12,13 @@ import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../..//labels'
 export class CalendarComponent implements OnInit {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   constructor(public alertCtrl: AlertController) {
     this.currentDate = new Date();
   }
+=======
+  constructor(public alertCtrl: AlertController) { }
+>>>>>>> parent of 816fbed... edited methods
 =======
   constructor(public alertCtrl: AlertController) { }
 >>>>>>> parent of 816fbed... edited methods
@@ -54,6 +58,7 @@ export class CalendarComponent implements OnInit {
     this.monthsLabels = monthsLabels;
     this.weekDaysHeader = weekDaysHeader;
 <<<<<<< HEAD
+<<<<<<< HEAD
     let date: iCalendar = {
       weekDay: this.currentDate.getDay(),
       day: this.currentDate.getDate(),
@@ -62,6 +67,8 @@ export class CalendarComponent implements OnInit {
     };
     this.choseDay(date);
 =======
+=======
+>>>>>>> parent of 816fbed... edited methods
     this.choseDay(
       {
         weekDay: this.currentDate.getDay(),
@@ -69,6 +76,9 @@ export class CalendarComponent implements OnInit {
         year: this.currentDate.getFullYear(),
         month: this.currentDate.getMonth()
       });
+<<<<<<< HEAD
+>>>>>>> parent of 816fbed... edited methods
+=======
 >>>>>>> parent of 816fbed... edited methods
   }
 
@@ -84,7 +94,10 @@ export class CalendarComponent implements OnInit {
    */
   private createCalendar(month, year) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     let date: iCalendar = { weekDay: 0, day: 0, month: 0, year: 0 };
+=======
+>>>>>>> parent of 816fbed... edited methods
 =======
 >>>>>>> parent of 816fbed... edited methods
     //Max days for the months in the Gregorian calendar. 
@@ -103,18 +116,24 @@ export class CalendarComponent implements OnInit {
     for (let i = 1 - startingDay; i <= monthsLength; i++) {
       if (i > 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         date.weekDay = new Date(this.year, this.month, i).getDay();
         date.day = i;
         date.year = this.year;
         date.month = this.month;
         this.calendarDays.push(date);
 =======
+=======
+>>>>>>> parent of 816fbed... edited methods
         this.calendarDays.push({
           weekDay: new Date(this.year, this.month, i).getDay(),
           day: i,
           month: this.month,
           year: this.year
         });
+<<<<<<< HEAD
+>>>>>>> parent of 816fbed... edited methods
+=======
 >>>>>>> parent of 816fbed... edited methods
       } else {
         this.calendarDays.push({
