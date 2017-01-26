@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { iCalendar } from './../../models';
-import { MoonPhaseService } from './../../providers/moonphase';
-
+import { iCalendar } from './../../types';
+import { MoonPhaseService } from './../../services/moonphase.service';
 /*
     TODO:
     Give an animation for when the data is loading
@@ -29,7 +28,8 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
     ngOnChanges(changes) {
         this.getMoonPhase(changes.date.currentValue);
     }
-/**Returns the current moonphase  */
+    
+    /**Returns the current moonphase  */
     getMoonPhase(date: iCalendar) {
         this.moonPhaseService
             .getMoonPhase(date)

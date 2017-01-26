@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { CropService } from './../../services/crop.service';
+import { iCrop, iCalendar } from './../../types';
+//import { CropsModel } from './../../models/cropsModel';
+
 
 /*
   Generated class for the Crops component.
@@ -11,20 +15,34 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'crops.html'
 })
 export class CropsComponent implements OnInit {
-
-    constructor() { }
+    @Input() date: iCalendar;
 
     /**List of crops */
-    crops: string[];
+    crops;
+
+    constructor(private cropService: CropService) { }
 
     ngOnInit() {
-        this.crops = crops;
+        this.getCrops(this.date.month);
+    }
+    ngOnChanges(changes) {
+        this.getCrops(this.date.month);
+    }
+    /**Returns the current crops  */
+    getCrops(month: number) {
+        this.cropService
+            .getCropsByMonth(month)
+            .then(api => {
+                //TODO: Make two arrays for abundantCrops and for beginOrProductionCrops 
+            })
+            .catch((error) => { Promise.reject(error.message || error) });
     }
 }
 
+////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-/// Only used for test purposes. It will be deleted./////
+/// Only used for test purposes. It will be deleted in ///
+/// production.                                       ///
 ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 export let crops = [

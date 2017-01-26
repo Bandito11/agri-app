@@ -1,26 +1,28 @@
 export interface iAerisConfig {
-    apiId: string;
-    apiSecret: string
+    id: string;
+    secret: string
+};
+export interface iCrop{
+    name:string;
 }
-
 export interface iCalendar {
-  weekDay?: number,
-  day: number,
-  month: number,
-  year: number
-}
+    weekDay: number,
+    day: number,
+    month: number,
+    year: number
+};
 
-export interface iCoordinate {
+export interface iCoordinates {
     latitude: number;
     longitude: number;
-}
+};
 
 export interface iMoonPhase {
     phase: string;
     icon: string;
-    english?: string;
-    full?:string;
-}
+    english: string;
+    full: string;
+};
 
 export interface iWeather {
     icon: string;
@@ -30,5 +32,5 @@ export interface iWeather {
     humidity: string;
     wind: string;
     pressure: string;
-    location?: string;
-}
+    location: string;
+};

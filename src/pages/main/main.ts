@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { iCalendar } from './../../models';
+import { iCalendar } from './../../types';
 import { weekDaysHeader, monthsLabels } from './../../labels'
 /*
   Generated class for the Calendario page.

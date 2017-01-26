@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-import { iCalendar } from './../../models';
-import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../..//labels'
+import { iCalendar } from './../../types';
+import { CalendarModel } from './../../models/calendarModel';
+import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../../labels'
 /*
   TODO:
 */
@@ -9,6 +10,7 @@ import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../..//labels'
   selector: 'calendar-component',
   templateUrl: 'calendar.html'
 })
+
 export class CalendarComponent implements OnInit {
   constructor(public alertCtrl: AlertController) {
     this.currentDate = new Date();
@@ -47,13 +49,9 @@ export class CalendarComponent implements OnInit {
     this.weekDaysLabels = weekDaysLabels;
     this.monthsLabels = monthsLabels;
     this.weekDaysHeader = weekDaysHeader;
-    this.choseDay(
-      {
-        weekDay: this.currentDate.getDay(),
-        day: this.currentDate.getDate(),
-        year: this.currentDate.getFullYear(),
-        month: this.currentDate.getMonth()
-      });
+    let calendar = new CalendarModel(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear());
+    calendar.weekDay = this.currentDate.getDay();
+    this.choseDay(calendar);
   }
 
   /**When the day is chosen, load the data from the db using the date as a parameter. */

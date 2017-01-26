@@ -9,8 +9,10 @@ import { CalendarComponent } from '../components/calendar/calendar';
 import { MoonPhaseComponent } from '../components/moonphase/moonphase';
 import { WeatherComponent } from '../components/weather/weather';
 import { CropsComponent } from '../components/crops/crops';
-import { MoonPhaseService } from '../providers/moonphase';
-import { WeatherService } from '../providers/weather';
+import { MoonPhaseService } from '../services/moonphase.service';
+import { WeatherService } from '../services/weather.service';
+import { LocationService } from '../services/location.service';
+import { CropService } from '../services/crop.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,6 @@ import { WeatherService } from '../providers/weather';
     ForoPage,
     TabsPage
   ],
-  providers: [ MoonPhaseService, WeatherService]
+  providers: [ MoonPhaseService, WeatherService, LocationService, CropService]
 })
 export class AppModule {}
