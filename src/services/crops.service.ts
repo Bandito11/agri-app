@@ -16,7 +16,7 @@ export class CropService {
 
     /**Returns an array containing Abundant and no production*/
     getCropsByMonth(month: number): Promise<any> {
-        let query = '/vegetable/' + month;
+        let query = '/crops/' + month;
         return this.http.get(this.url + query)
             .toPromise()
             .then((response: Response) => response.json())

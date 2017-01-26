@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { CropService } from './../../services/crop.service';
+import { CropService } from './../../services/crops.service';
 import { iCrop, iCalendar } from './../../types';
 //import { CropsModel } from './../../models/cropsModel';
 
@@ -25,9 +25,11 @@ export class CropsComponent implements OnInit {
     ngOnInit() {
         this.getCrops(this.date.month);
     }
+
     ngOnChanges(changes) {
         this.getCrops(this.date.month);
     }
+
     /**Returns the current crops  */
     getCrops(month: number) {
         this.cropService

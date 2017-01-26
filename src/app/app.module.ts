@@ -12,7 +12,7 @@ import { CropsComponent } from '../components/crops/crops';
 import { MoonPhaseService } from '../services/moonphase.service';
 import { WeatherService } from '../services/weather.service';
 import { LocationService } from '../services/location.service';
-import { CropService } from '../services/crop.service';
+import { CropService } from '../services/crops.service';
 
 @NgModule({
   declarations: [
