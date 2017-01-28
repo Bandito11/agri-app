@@ -15,7 +15,7 @@ export class CropService {
     constructor(private http: Http) { }
 
     /**Returns an array containing Abundant and no production*/
-    getCropsByMonth(month: number): Promise<any> {
+    getCropsByMonth(month: number): Promise<iCrop> {
         let query = '/crops/' + month;
         return this.http.get(this.url + query)
             .toPromise()

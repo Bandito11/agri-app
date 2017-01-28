@@ -1,15 +1,22 @@
+
 export interface iAerisConfig {
     id: string;
     secret: string
 };
-export interface iCrop{
-    name:string;
-}
+
 export interface iCalendar {
     weekDay: number,
     day: number,
     month: number,
     year: number
+};
+
+export interface iCrop {
+    crop: string;
+    abundance: Array<number>;
+    beginOrProduction: Array<number>;
+    noProduction: Array<number>;
+    icon: string;
 };
 
 export interface iCoordinates {
