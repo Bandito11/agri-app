@@ -1,0 +1,157 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 12/02/2017 22:27
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-acerola:before { content: "\f100"; }
+.flaticon-aguacate:before { content: "\f101"; }
+.flaticon-aji-dulce:before { content: "\f102"; }
+.flaticon-apio:before { content: "\f103"; }
+.flaticon-bananas:before { content: "\f104"; }
+.flaticon-batata:before { content: "\f105"; }
+.flaticon-berenjena:before { content: "\f106"; }
+.flaticon-calabaza:before { content: "\f107"; }
+.flaticon-carambola:before { content: "\f108"; }
+.flaticon-cebolla:before { content: "\f109"; }
+.flaticon-chayote:before { content: "\f10a"; }
+.flaticon-china-nativa:before { content: "\f10b"; }
+.flaticon-china-nebo:before { content: "\f10c"; }
+.flaticon-china-valencia:before { content: "\f10d"; }
+.flaticon-chironja:before { content: "\f10e"; }
+.flaticon-cilantrillo:before { content: "\f10f"; }
+.flaticon-coco:before { content: "\f110"; }
+.flaticon-corazon:before { content: "\f111"; }
+.flaticon-gandur:before { content: "\f112"; }
+.flaticon-guanabana:before { content: "\f113"; }
+.flaticon-guineo:before { content: "\f114"; }
+.flaticon-habichuela-tierna:before { content: "\f115"; }
+.flaticon-habichuela-verde:before { content: "\f116"; }
+.flaticon-lechuga:before { content: "\f117"; }
+.flaticon-lima:before { content: "\f118"; }
+.flaticon-limon:before { content: "\f119"; }
+.flaticon-maiz-dulce:before { content: "\f11a"; }
+.flaticon-maiz-guisar:before { content: "\f11b"; }
+.flaticon-malanga:before { content: "\f11c"; }
+.flaticon-mamey:before { content: "\f11d"; }
+.flaticon-mamey-sapote:before { content: "\f11e"; }
+.flaticon-mandarina-dancy:before { content: "\f11f"; }
+.flaticon-mandarina-encore:before { content: "\f120"; }
+.flaticon-mango:before { content: "\f121"; }
+.flaticon-mango-1:before { content: "\f122"; }
+.flaticon-melon-de-agua:before { content: "\f123"; }
+.flaticon-melon-slice:before { content: "\f124"; }
+.flaticon-nispero:before { content: "\f125"; }
+.flaticon-pana-de-pepita:before { content: "\f126"; }
+.flaticon-panapen:before { content: "\f127"; }
+.flaticon-papaya:before { content: "\f128"; }
+.flaticon-parcha:before { content: "\f129"; }
+.flaticon-pepinillo:before { content: "\f12a"; }
+.flaticon-pimiento:before { content: "\f12b"; }
+.flaticon-pimiento-morron:before { content: "\f12c"; }
+.flaticon-pina:before { content: "\f12d"; }
+.flaticon-platano:before { content: "\f12e"; }
+.flaticon-quenepa:before { content: "\f12f"; }
+.flaticon-quirimbombo:before { content: "\f130"; }
+.flaticon-recao:before { content: "\f131"; }
+.flaticon-recao-1:before { content: "\f132"; }
+.flaticon-repollo:before { content: "\f133"; }
+.flaticon-tamarindo:before { content: "\f134"; }
+.flaticon-tangelo:before { content: "\f135"; }
+.flaticon-tomate:before { content: "\f136"; }
+.flaticon-toronja:before { content: "\f137"; }
+.flaticon-yautia-blanca:before { content: "\f138"; }
+.flaticon-yautia-morada:before { content: "\f139"; }
+.flaticon-yuca:before { content: "\f13a"; }
+    
+    $font-Flaticon-acerola: "\f100";
+    $font-Flaticon-aguacate: "\f101";
+    $font-Flaticon-aji-dulce: "\f102";
+    $font-Flaticon-apio: "\f103";
+    $font-Flaticon-bananas: "\f104";
+    $font-Flaticon-batata: "\f105";
+    $font-Flaticon-berenjena: "\f106";
+    $font-Flaticon-calabaza: "\f107";
+    $font-Flaticon-carambola: "\f108";
+    $font-Flaticon-cebolla: "\f109";
+    $font-Flaticon-chayote: "\f10a";
+    $font-Flaticon-china-nativa: "\f10b";
+    $font-Flaticon-china-nebo: "\f10c";
+    $font-Flaticon-china-valencia: "\f10d";
+    $font-Flaticon-chironja: "\f10e";
+    $font-Flaticon-cilantrillo: "\f10f";
+    $font-Flaticon-coco: "\f110";
+    $font-Flaticon-corazon: "\f111";
+    $font-Flaticon-gandur: "\f112";
+    $font-Flaticon-guanabana: "\f113";
+    $font-Flaticon-guineo: "\f114";
+    $font-Flaticon-habichuela-tierna: "\f115";
+    $font-Flaticon-habichuela-verde: "\f116";
+    $font-Flaticon-lechuga: "\f117";
+    $font-Flaticon-lima: "\f118";
+    $font-Flaticon-limon: "\f119";
+    $font-Flaticon-maiz-dulce: "\f11a";
+    $font-Flaticon-maiz-guisar: "\f11b";
+    $font-Flaticon-malanga: "\f11c";
+    $font-Flaticon-mamey: "\f11d";
+    $font-Flaticon-mamey-sapote: "\f11e";
+    $font-Flaticon-mandarina-dancy: "\f11f";
+    $font-Flaticon-mandarina-encore: "\f120";
+    $font-Flaticon-mango: "\f121";
+    $font-Flaticon-mango-1: "\f122";
+    $font-Flaticon-melon-de-agua: "\f123";
+    $font-Flaticon-melon-slice: "\f124";
+    $font-Flaticon-nispero: "\f125";
+    $font-Flaticon-pana-de-pepita: "\f126";
+    $font-Flaticon-panapen: "\f127";
+    $font-Flaticon-papaya: "\f128";
+    $font-Flaticon-parcha: "\f129";
+    $font-Flaticon-pepinillo: "\f12a";
+    $font-Flaticon-pimiento: "\f12b";
+    $font-Flaticon-pimiento-morron: "\f12c";
+    $font-Flaticon-pina: "\f12d";
+    $font-Flaticon-platano: "\f12e";
+    $font-Flaticon-quenepa: "\f12f";
+    $font-Flaticon-quirimbombo: "\f130";
+    $font-Flaticon-recao: "\f131";
+    $font-Flaticon-recao-1: "\f132";
+    $font-Flaticon-repollo: "\f133";
+    $font-Flaticon-tamarindo: "\f134";
+    $font-Flaticon-tangelo: "\f135";
+    $font-Flaticon-tomate: "\f136";
+    $font-Flaticon-toronja: "\f137";
+    $font-Flaticon-yautia-blanca: "\f138";
+    $font-Flaticon-yautia-morada: "\f139";
+    $font-Flaticon-yuca: "\f13a";

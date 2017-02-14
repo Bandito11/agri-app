@@ -11,7 +11,7 @@ export class LocationService {
     /**Get coordinates from device*/
     getLocation(): Promise<iCoordinates> {
         return Geolocation.getCurrentPosition().then((resp) => {
-            let coordinates = new CoordinatesModel(0,0);
+            let coordinates = new CoordinatesModel(0, 0);
             coordinates.latitude = resp.coords.latitude;
             coordinates.longitude = resp.coords.longitude;
             return coordinates;

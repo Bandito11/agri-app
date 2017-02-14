@@ -32,10 +32,23 @@ export class CropsComponent implements OnInit {
 
     /**Returns the current crops  */
     getCrops(month: number) {
+        this.crops = [];
         this.cropService
             .getCropsByMonth(month)
             .then(api => {
                 //TODO: Make two arrays for abundantCrops and for beginOrProductionCrops 
+                for (let i = 0; i < api.abundantCrops.length; i++) {
+                    this.crops[i] = api.abundantCrops[i];
+                }
+                // api.abundantCrops.forEach((crop) =>
+                //     this.crops.push(crop.name)
+                // );
+                for (let i = 0; i < api.beginOrProductionCrops.length; i++) {
+                    this.crops[i + api.abundantCrops.length] = api.beginOrProductionCrops[i];
+                }
+                // api.beginOrProductionCrops.forEach((crop) =>
+                //     this.crops.push(crop.name)
+                // );
             })
             .catch((error) => { Promise.reject(error.message || error) });
     }

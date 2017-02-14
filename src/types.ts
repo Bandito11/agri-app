@@ -17,6 +17,7 @@ export interface iCrop {
     beginOrProduction: Array<number>;
     noProduction: Array<number>;
     icon: string;
+    color: string;
 };
 
 export interface iCoordinates {

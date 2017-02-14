@@ -1,0 +1,262 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 12/02/2017 22:27
+  	*/
+	
+	@font-face {
+	  font-family: "crops";
+	  src: url("./Flaticon.eot");
+	  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"), url("./Flaticon.woff") format("woff"), url("./Flaticon.ttf") format("truetype"), url("./Flaticon.svg#Flaticon") format("svg");
+	  font-weight: normal;
+	  font-style: normal;
+	}
+	
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+	  @font-face {
+	    font-family: "crops";
+	    src: url("./Flaticon.svg#crops") format("svg");
+	  }
+	}
+	
+	[class^="crops-"]:before, [class*=" crops-"]:before, [class^="crops-"]:after, [class*=" crops-"]:after {
+	  font-family: "crops";
+	  font-size: 20px;
+	  font-style: normal;
+	  margin-left: 20px;
+	}
+	
+	.crops-acerola:before {
+	  content: "\f100";
+	}
+	
+	.crops-aguacate:before {
+	  content: "\f101";
+	}
+	
+	.crops-aji-dulce:before {
+	  content: "\f102";
+	}
+	
+	.crops-apio:before {
+	  content: "\f103";
+	}
+	
+	.crops-bananas:before {
+	  content: "\f104";
+	}
+	
+	.crops-batata:before {
+	  content: "\f105";
+	}
+	
+	.crops-berenjena:before {
+	  content: "\f106";
+	}
+	
+	.crops-calabaza:before {
+	  content: "\f107";
+	}
+	
+	.crops-carambola:before {
+	  content: "\f108";
+	}
+	
+	.crops-cebolla:before {
+	  content: "\f109";
+	}
+	
+	.crops-chayote:before {
+	  content: "\f10a";
+	}
+	
+	.crops-china-nativa:before {
+	  content: "\f10b";
+	}
+	
+	.crops-china-nebo:before {
+	  content: "\f10c";
+	}
+	
+	.crops-china-valencia:before {
+	  content: "\f10d";
+	}
+	
+	.crops-chironja:before {
+	  content: "\f10e";
+	}
+	
+	.crops-cilantrillo:before {
+	  content: "\f10f";
+	}
+	
+	.crops-coco:before {
+	  content: "\f110";
+	}
+	
+	.crops-corazon:before {
+	  content: "\f111";
+	}
+	
+	.crops-gandur:before {
+	  content: "\f112";
+	}
+	
+	.crops-guanabana:before {
+	  content: "\f113";
+	}
+	
+	.crops-guineo:before {
+	  content: "\f114";
+	}
+	
+	.crops-habichuela-tierna:before {
+	  content: "\f115";
+	}
+	
+	.crops-habichuela-verde:before {
+	  content: "\f116";
+	}
+	
+	.crops-lechuga:before {
+	  content: "\f117";
+	}
+	
+	.crops-lima:before {
+	  content: "\f118";
+	}
+	
+	.crops-limon:before {
+	  content: "\f119";
+	}
+	
+	.crops-maiz-dulce:before {
+	  content: "\f11a";
+	}
+	
+	.crops-maiz-guisar:before {
+	  content: "\f11b";
+	}
+	
+	.crops-malanga:before {
+	  content: "\f11c";
+	}
+	
+	.crops-mamey:before {
+	  content: "\f11d";
+	}
+	
+	.crops-mamey-sapote:before {
+	  content: "\f11e";
+	}
+	
+	.crops-mandarina-dancy:before {
+	  content: "\f11f";
+	}
+	
+	.crops-mandarina-encore:before {
+	  content: "\f120";
+	}
+	
+	.crops-mango:before {
+	  content: "\f121";
+	}
+	
+	.crops-mango-1:before {
+	  content: "\f122";
+	}
+	
+	.crops-melon-de-agua:before {
+	  content: "\f123";
+	}
+	
+	.crops-melon-slice:before {
+	  content: "\f124";
+	}
+	
+	.crops-nispero:before {
+	  content: "\f125";
+	}
+	
+	.crops-pana-de-pepita:before {
+	  content: "\f126";
+	}
+	
+	.crops-panapen:before {
+	  content: "\f127";
+	}
+	
+	.crops-papaya:before {
+	  content: "\f128";
+	}
+	
+	.crops-parcha:before {
+	  content: "\f129";
+	}
+	
+	.crops-pepinillo:before {
+	  content: "\f12a";
+	}
+	
+	.crops-pimiento:before {
+	  content: "\f12b";
+	}
+	
+	.crops-pimiento-morron:before {
+	  content: "\f12c";
+	}
+	
+	.crops-pina:before {
+	  content: "\f12d";
+	}
+	
+	.crops-platano:before {
+	  content: "\f12e";
+	}
+	
+	.crops-quenepa:before {
+	  content: "\f12f";
+	}
+	
+	.crops-quirimbombo:before {
+	  content: "\f130";
+	}
+	
+	.crops-recao:before {
+	  content: "\f131";
+	}
+	
+	.crops-recao-1:before {
+	  content: "\f132";
+	}
+	
+	.crops-repollo:before {
+	  content: "\f133";
+	}
+	
+	.crops-tamarindo:before {
+	  content: "\f134";
+	}
+	
+	.crops-tangelo:before {
+	  content: "\f135";
+	}
+	
+	.crops-tomate:before {
+	  content: "\f136";
+	}
+	
+	.crops-toronja:before {
+	  content: "\f137";
+	}
+	
+	.crops-yautia-blanca:before {
+	  content: "\f138";
+	}
+	
+	.crops-yautia-morada:before {
+	  content: "\f139";
+	}
+	
+	.crops-yuca:before {
+	  content: "\f13a";
+	}

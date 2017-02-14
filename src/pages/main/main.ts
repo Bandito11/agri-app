@@ -15,8 +15,8 @@ import { weekDaysHeader, monthsLabels } from './../../labels'
 })
 export class MainPage {
 
-  constructor(private navCtrl: NavController) { 
-     this.weekDaysHeader = weekDaysHeader;
+  constructor(private navCtrl: NavController) {
+    this.weekDaysHeader = weekDaysHeader;
   }
 
   /** weekDaysHeader html properties*/
@@ -34,7 +34,7 @@ export class MainPage {
   /** zodiacImage html properties*/
   zodiacImage: string;
 
-/**Get the current date */
+  /**Get the current date */
   getDate(date: iCalendar) {
     this.date = date;
     this.currentDay = date.day;
@@ -44,7 +44,7 @@ export class MainPage {
     this.setZodiac(date);
   }
 
-/** Set the image string for the zodiac*/
+  /** Set the image string for the zodiac*/
   setZodiac(date: iCalendar) {
     switch (date.month) {
       case 0:

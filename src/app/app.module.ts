@@ -36,6 +36,7 @@ import { CropService } from '../services/crops.service';
     ForoPage,
     TabsPage
   ],
-  providers: [ MoonPhaseService, WeatherService, LocationService, CropService]
+  providers: [MoonPhaseService, WeatherService, LocationService, CropService]
 })
-export class AppModule {}
+
+export class AppModule { }
