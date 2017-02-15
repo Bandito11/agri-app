@@ -42,7 +42,7 @@ export class WeatherComponent implements OnInit, OnChanges {
     ngOnChanges(changes) {
         this.getWeather(changes.date.currentValue);
     }
-/**Returns the summary of the current weather for the date given */
+    /**Returns the summary of the current weather for the date given */
     getWeather(date: iCalendar) {
         //TODO:
         //Make an icon array for each possible weather state
@@ -57,9 +57,10 @@ export class WeatherComponent implements OnInit, OnChanges {
                 this.humidity = api.humidity;
                 this.wind = api.wind;
                 this.pressure = api.pressure;
-            }).catch(err => this.handleError(err));
+            })
+            .catch(err => this.handleError(err));
     }
-    
+
     handleError(err) {
         console.log(err);
     }

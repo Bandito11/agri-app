@@ -5,7 +5,7 @@ export interface iAerisConfig {
 };
 
 export interface iCalendar {
-    weekDay: number,
+    weekDay?: number,
     day: number,
     month: number,
     year: number

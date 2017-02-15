@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CropService } from './../../services/crops.service';
 import { iCrop, iCalendar } from './../../types';
-//import { CropsModel } from './../../models/cropsModel';
 
 
 /*
@@ -14,7 +13,7 @@ import { iCrop, iCalendar } from './../../types';
     selector: 'crops-component',
     templateUrl: 'crops.html'
 })
-export class CropsComponent implements OnInit {
+export class CropsComponent implements OnInit, OnChanges {
     @Input() date: iCalendar;
 
     /**List of crops */
@@ -36,7 +35,7 @@ export class CropsComponent implements OnInit {
         this.cropService
             .getCropsByMonth(month)
             .then(api => {
-                //TODO: Make two arrays for abundantCrops and for beginOrProductionCrops 
+                //TODO: Make three arrays for abundantCrops, noProductionCrops and for beginOrProductionCrops 
                 for (let i = 0; i < api.abundantCrops.length; i++) {
                     this.crops[i] = api.abundantCrops[i];
                 }
@@ -49,18 +48,13 @@ export class CropsComponent implements OnInit {
                 // api.beginOrProductionCrops.forEach((crop) =>
                 //     this.crops.push(crop.name)
                 // );
+                for (let i = 0; i < api.noProductionCrops.length; i++) {
+                    this.crops[i + api.abundantCrops.length + api.beginOrProductionCrops.length] = api.noProductionCrops[i];
+                }
+                // api.noProductionCrops.forEach((crop) =>
+                //     this.crops.push(crop.name)
+                // );
             })
             .catch((error) => { Promise.reject(error.message || error) });
     }
 }
-
-////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////
-/// Only used for test purposes. It will be deleted in ///
-/// production.                                       ///
-////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-export let crops = [
-    'Berenjena',
-    'Cebollas'
-]

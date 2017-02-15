@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { iCalendar } from './../../types';
-import { CalendarModel } from './../../models/calendarModel';
 import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../../labels'
 /*
   TODO:
@@ -49,7 +48,7 @@ export class CalendarComponent implements OnInit {
     this.weekDaysLabels = weekDaysLabels;
     this.monthsLabels = monthsLabels;
     this.weekDaysHeader = weekDaysHeader;
-    let calendar = new CalendarModel(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear());
+    let calendar: iCalendar = { day: this.currentDate.getDate(), month: this.currentDate.getMonth(), year: this.currentDate.getFullYear() };
     calendar.weekDay = this.currentDate.getDay();
     this.choseDay(calendar);
   }

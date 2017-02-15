@@ -1,6 +1,6 @@
 import { Injectable, } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { iCrop } from './../types';
+// import { iCrop } from './../types';
 import { url } from './../common';
 @Injectable()
 
