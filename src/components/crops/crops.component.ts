@@ -11,7 +11,7 @@ import { iCrop, iCalendar } from './../../types';
 */
 @Component({
     selector: 'crops-component',
-    templateUrl: 'crops.html'
+    templateUrl: 'crops.component.html'
 })
 export class CropsComponent implements OnInit, OnChanges {
     @Input() date: iCalendar;
