@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
-import { MainPage } from '../main/main';
-import { ForoPage } from '../foro/foro';
+import { MainPage } from '../main/main.page';
 
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'tabs.page.html'
 })
 export class TabsPage {
 
