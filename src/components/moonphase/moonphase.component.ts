@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { iCalendar } from './../../types';
-import { MoonPhaseService } from './../../services/moonphase.service';
+import { MoonPhaseProvider } from './../../providers/moonphase.provider';
 /*
     TODO:
     Give an animation for when the data is loading
@@ -11,7 +11,7 @@ import { MoonPhaseService } from './../../services/moonphase.service';
 })
 export class MoonPhaseComponent implements OnInit, OnChanges {
 
-    constructor(private moonPhaseService: MoonPhaseService) { }
+    constructor(private moonPhaseService: MoonPhaseProvider) { }
 
     @Input() date: iCalendar;
     /**moonphase html properties*/
