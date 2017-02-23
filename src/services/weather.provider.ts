@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { iCalendar, iWeather } from './../types';
-import { LocationService } from './location.service';
+import { LocationProvider } from './location.provider';
 import { url } from './../common';
 
 import 'rxjs/add/operator/toPromise';
@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
 */
 @Injectable()
 export class WeatherProvider {
-  constructor(private http: Http, private locationService: LocationService) { }
+  constructor(private http: Http, private locationService: LocationProvider) { }
 
   /**Get weather summary*/
   getWeather(date: iCalendar): Promise<iWeather> {
