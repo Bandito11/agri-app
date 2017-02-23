@@ -10,11 +10,11 @@ import 'rxjs/add/operator/toPromise';
 */
 @Injectable()
 export class WeatherProvider {
-  constructor(private http: Http, private locationService: LocationProvider) { }
+  constructor(private http: Http, private locationProvider: LocationProvider) { }
 
   /**Get weather summary*/
   getWeather(date: iCalendar): Promise<iWeather> {
-    return this.locationService.getLocation().then(location => {
+    return this.locationProvider.getLocation().then(location => {
       let query = "/weather/" + date.year + '&' + date.month + '&' + date.day + '&' + location.latitude + '&' + location.longitude;
       return this.http.get(url + query)
         .toPromise()
