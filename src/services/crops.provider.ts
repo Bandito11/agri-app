@@ -1,6 +1,5 @@
 import { Injectable, } from '@angular/core';
 import { Http, Response } from '@angular/http';
-// import { iCrop } from './../types';
 import { url } from './../common';
 @Injectable()
 
@@ -9,7 +8,7 @@ import { url } from './../common';
  * a. write docs
  * b. get data from server
  */
-export class CropService {
+export class CropProvider {
 
     constructor(private http: Http) { }
 
