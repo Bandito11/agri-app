@@ -8,7 +8,6 @@ import { MainPage } from '../main/main.page';
 export class TabsPage {
 
   main: any = MainPage;
-  forum: any = ForoPage;
 
   constructor() {
 
