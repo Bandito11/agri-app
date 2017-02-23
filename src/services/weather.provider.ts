@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
   TODO:
 */
 @Injectable()
-export class WeatherService {
+export class WeatherProvider {
   constructor(private http: Http, private locationService: LocationService) { }
 
   /**Get weather summary*/
