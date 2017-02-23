@@ -30,7 +30,7 @@ import { CropProvider } from '../providers/crops.provider';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-//  TabsPage,
+    //  TabsPage,
     MainPage,
   ],
   providers: [MoonPhaseProvider, WeatherProvider, LocationProvider, CropProvider]
