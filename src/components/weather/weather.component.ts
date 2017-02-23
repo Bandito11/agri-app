@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import { WeatherService } from './../../services/weather.service';
+import { WeatherProvider } from './../../providers/weather.provider';
 import { iCalendar } from './../../types';
 
 /*
@@ -10,12 +10,12 @@ import { iCalendar } from './../../types';
 */
 @Component({
     selector: 'weather-component',
-    templateUrl: 'weather.html'
+    templateUrl: 'weather.component.html'
 })
 
 export class WeatherComponent implements OnInit, OnChanges {
 
-    constructor(private weatherService: WeatherService) { }
+    constructor(private weatherService: WeatherProvider) { }
 
     @Input() date: iCalendar;
     /**currentTempIcon html properties*/
