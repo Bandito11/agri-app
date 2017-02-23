@@ -3,7 +3,7 @@ import { iCoordinates } from './../types';
 import { Geolocation } from 'ionic-native';
 
 @Injectable()
-export class LocationService {
+export class LocationProvider {
 
     constructor() { }
 
