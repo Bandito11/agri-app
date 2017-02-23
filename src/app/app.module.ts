@@ -5,14 +5,14 @@ import { MyApp } from './app.component';
 import { MainPage } from '../pages/main/main';
 import { ForoPage } from '../pages/foro/foro';
 import { TabsPage } from '../pages/tabs/tabs';
-import { CalendarComponent } from '../components/calendar/calendar';
-import { MoonPhaseComponent } from '../components/moonphase/moonphase';
-import { WeatherComponent } from '../components/weather/weather';
-import { CropsComponent } from '../components/crops/crops';
-import { MoonPhaseService } from '../services/moonphase.service';
-import { WeatherService } from '../services/weather.service';
-import { LocationService } from '../services/location.service';
-import { CropService } from '../services/crops.service';
+import { CalendarComponent } from '../components/calendar/calendar.component';
+import { MoonPhaseComponent } from '../components/moonphase/moonphase.component';
+import { WeatherComponent } from '../components/weather/weather.component';
+import { CropsComponent } from '../components/crops/crops.component';
+import { MoonPhaseProvider } from '../providers/moonphase.provider';
+import { WeatherProvider } from '../providers/weather.provider';
+import { LocationProvider } from '../providers/location.provider';
+import { CropProvider } from '../providers/crops.provider';
 
 @NgModule({
   declarations: [
@@ -33,10 +33,9 @@ import { CropService } from '../services/crops.service';
   entryComponents: [
     MyApp,
     MainPage,
-    ForoPage,
     TabsPage
   ],
-  providers: [MoonPhaseService, WeatherService, LocationService, CropService]
+  providers: [MoonPhaseProvider, WeatherProvider, LocationProvider, CropProvider]
 })
 
 export class AppModule { }
