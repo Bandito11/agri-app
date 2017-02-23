@@ -7,7 +7,7 @@ import { MoonPhaseService } from './../../services/moonphase.service';
 */
 @Component({
     selector: 'moon-phase-component',
-    templateUrl: 'moonphase.html'
+    templateUrl: 'moonphase.component.html'
 })
 export class MoonPhaseComponent implements OnInit, OnChanges {
 
