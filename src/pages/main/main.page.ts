@@ -11,7 +11,7 @@ import { weekDaysHeader, monthsLabels } from './../../labels'
 */
 @Component({
   selector: 'page-main',
-  templateUrl: 'main.html'
+  templateUrl: 'main.page.html'
 })
 export class MainPage {
 
