@@ -16,6 +16,7 @@ export class MoonPhaseProvider {
   /**Will return the moonphase*/
   getMoonPhase(date: iCalendar): Promise<iMoonPhase> {
     return this.locationProvider.getLocation().then(location => {
+      let today = new Date();
       const query = '/moonphase/' + date.year + '&' + date.month + '&' + date.day + '&' + location.latitude + '&' + location.longitude + '&' + today.getHours() + '&' + today.getMinutes() + '&' + today.getSeconds();
       return this.http.get(url + query)
         .toPromise()
