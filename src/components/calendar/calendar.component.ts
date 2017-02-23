@@ -7,7 +7,7 @@ import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../../labels'
 */
 @Component({
   selector: 'calendar-component',
-  templateUrl: 'calendar.html'
+  templateUrl: 'calendar.component.html'
 })
 
 export class CalendarComponent implements OnInit {
