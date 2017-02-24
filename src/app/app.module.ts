@@ -3,7 +3,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { MainPage } from '../pages/main/main.page';
-import { TabsPage } from '../pages/tabs/tabs.page';
+//import { TabsPage } from '../pages/tabs/tabs.page';
 import { CalendarComponent } from '../components/calendar/calendar.component';
 import { MoonPhaseComponent } from '../components/moonphase/moonphase.component';
 import { WeatherComponent } from '../components/weather/weather.component';
@@ -17,7 +17,6 @@ import { CropProvider } from '../providers/crops.provider';
   declarations: [
     MyApp,
     MainPage,
-    TabsPage,
     CalendarComponent,
     MoonPhaseComponent,
     WeatherComponent,
@@ -30,8 +29,7 @@ import { CropProvider } from '../providers/crops.provider';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    //  TabsPage,
-    MainPage,
+    MainPage
   ],
   providers: [MoonPhaseProvider, WeatherProvider, LocationProvider, CropProvider]
 })

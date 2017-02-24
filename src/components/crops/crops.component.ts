@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CropProvider } from './../../providers/crops.provider';
-import { iCrop, iCalendar } from './../../types';
+import { iCalendar } from './../../types';
 
 
 /*
