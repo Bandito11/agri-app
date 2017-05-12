@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { iCoordinates } from './../types';
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @Injectable()
 export class LocationProvider {
 
-    constructor() { }
+    constructor(private geolocation: Geolocation) { }
 
     /**Get coordinates from device*/
     getLocation(): Promise<iCoordinates> {
-        return Geolocation.getCurrentPosition().then((resp) => {
-            let coordinates: iCoordinates = { latitude: 0, longitude: 0 };
-            coordinates.latitude = resp.coords.latitude;
-            coordinates.longitude = resp.coords.longitude;
-            return coordinates;
-        })
-            .catch(err => this.handleError(err));
+
+        return new Promise((resolve, reject) => {
+            this.geolocation.getCurrentPosition().then((resp) => {
+                let coordinates: iCoordinates = { latitude: 0, longitude: 0 };
+                coordinates.latitude = resp.coords.latitude;
+                coordinates.longitude = resp.coords.longitude;
+                resolve(coordinates);
+            })
+                .catch(err => this.handleError(err));
+        });
     }
 
     private handleError(error: any): Promise<any> {

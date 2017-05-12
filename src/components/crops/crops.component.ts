@@ -18,6 +18,7 @@ export class CropsComponent implements OnInit, OnChanges {
 
     /**List of crops */
     crops;
+    errorMessage: string;
 
     constructor(private cropService: CropProvider) { }
 
@@ -32,9 +33,8 @@ export class CropsComponent implements OnInit, OnChanges {
     /**Returns the current crops  */
     getCrops(month: number) {
         this.crops = [];
-        this.cropService
-            .getCropsByMonth(month)
-            .then(api => {
+        this.cropService.getCropsByMonth(month)
+            .subscribe(api => {
                 //TODO: Make three arrays for abundantCrops, noProductionCrops and for beginOrProductionCrops 
                 for (let i = 0; i < api.abundantCrops.length; i++) {
                     this.crops[i] = api.abundantCrops[i];
@@ -54,7 +54,7 @@ export class CropsComponent implements OnInit, OnChanges {
                 // api.noProductionCrops.forEach((crop) =>
                 //     this.crops.push(crop.name)
                 // );
-            })
-            .catch((error) => { Promise.reject(error.message || error) });
+            },
+            error => this.errorMessage = <any>error);
     }
 }
