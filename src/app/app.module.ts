@@ -17,6 +17,10 @@ import { MoonPhaseProvider } from '../providers/moonphase.provider';
 import { WeatherProvider } from '../providers/weather.provider';
 import { LocationProvider } from '../providers/location.provider';
 import { CropProvider } from '../providers/crops.provider';
+import { NoprodComponent } from '../components/noprod/noprod';
+import { AbundanceComponent } from '../components/abundance/abundance';
+import { TipsComponent } from '../components/tips/tips';
+import { TipsProvider } from '../providers/tips/tips';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { CropProvider } from '../providers/crops.provider';
     CalendarComponent,
     MoonPhaseComponent,
     WeatherComponent,
-    CropsComponent
+    CropsComponent,
+    NoprodComponent,
+    AbundanceComponent,
+    TipsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,8 @@ import { CropProvider } from '../providers/crops.provider';
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler
-    }
+    },
+    TipsProvider
   ]
 })
 

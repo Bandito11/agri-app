@@ -19,8 +19,8 @@ export class CropProvider {
     constructor(private http: Http) { }
 
     /**Returns an array containing Abundant and no production*/
-    getCropsByMonth(month: number) {
-        let query = '/crops/' + month;
+    getCropsByMonth(data: {month: number, mode:string}) {
+        let query = `/crops/${data.month}&${data.mode}`;
         return this.http.get(URL + query)
             .map((response: Response) => response.json())
             .catch(err => this.handleError(err));

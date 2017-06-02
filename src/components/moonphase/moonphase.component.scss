@@ -1,20 +1,10 @@
 .moonphase {
-
     [class^="moonphase-"]:before, [class*=" moonphase-"]:before,
     [class^="moonphase-"]:after, [class*=" moonphase-"]:after, #moon-phase {   
         font-size: 2.5em;
     }
     .moon-phase{
         display:flex;
-    }
-    
-    // .earth-distance p {
-    //     text-align: center;
-    //     color:$text-color;
-    // }
-
-    #date{
-        
     }
 
 }

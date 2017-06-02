@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CropProvider } from './../../providers/crops.provider';
-import { iCalendar } from './../../types';
-
-
+import { iCalendar, iCrop } from './../../types';
 /*
   Generated class for the Crops component.
 
@@ -17,7 +15,7 @@ export class CropsComponent implements OnInit, OnChanges {
     @Input() date: iCalendar;
 
     /**List of crops */
-    crops;
+    crops: iCrop[] = [];
     errorMessage: string;
 
     constructor(private cropService: CropProvider) { }
@@ -32,28 +30,12 @@ export class CropsComponent implements OnInit, OnChanges {
 
     /**Returns the current crops  */
     getCrops(month: number) {
-        this.crops = [];
-        this.cropService.getCropsByMonth(month)
+        this.cropService.getCropsByMonth({month: month, mode: 'beginCrops'})
             .subscribe(api => {
                 //TODO: Make three arrays for abundantCrops, noProductionCrops and for beginOrProductionCrops 
-                for (let i = 0; i < api.abundantCrops.length; i++) {
-                    this.crops[i] = api.abundantCrops[i];
+                for (let i = 0; i < api.length; i++) {
+                    this.crops[i] = api[i];
                 }
-                // api.abundantCrops.forEach((crop) =>
-                //     this.crops.push(crop.name)
-                // );
-                for (let i = 0; i < api.beginOrProductionCrops.length; i++) {
-                    this.crops[i + api.abundantCrops.length] = api.beginOrProductionCrops[i];
-                }
-                // api.beginOrProductionCrops.forEach((crop) =>
-                //     this.crops.push(crop.name)
-                // );
-                for (let i = 0; i < api.noProductionCrops.length; i++) {
-                    this.crops[i + api.abundantCrops.length + api.beginOrProductionCrops.length] = api.noProductionCrops[i];
-                }
-                // api.noProductionCrops.forEach((crop) =>
-                //     this.crops.push(crop.name)
-                // );
             },
             error => this.errorMessage = <any>error);
     }

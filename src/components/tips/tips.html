@@ -1,0 +1,11 @@
+<ion-card class="tips">
+  <ion-card-header>
+    {{zodiacName}}<span data-icon="&#xe001;" aria-hidden="true" class="{{zodiacImage}}"></span>
+  </ion-card-header>
+    <!--Zodiac item-->
+    <ion-list>
+      <ion-item *ngFor="let tip of tips" text-wrap>
+        {{tip.message}}
+      </ion-item>
+    </ion-list>
+</ion-card>

@@ -1,29 +1,30 @@
-<!--
-  Generated template for the Weather component.
+<ion-card>
+	<ion-card-header>
+			{{currentLocation}}
+	</ion-card-header>
+	<ion-card-content>
+		<div class="weather">
+			<p id="weather">
+				{{currentTemp}}<i data-icon="&#xe001;" aria-hidden="true" class="{{currentTempIcon}}"></i>
+			</p>
+			<ion-list no-lines>
+				<ion-item>
+					{{weatherState}}
+				</ion-item>
+				<ion-item>
+					Precipitación: {{precipitation}}
+				</ion-item>
+				<ion-item>
+					Humedad: {{humidity}}
+				</ion-item>
+				<ion-item>
+					Presión: {{pressure}}
+				</ion-item>
+				<ion-item>
+					Velocidad del viento: {{wind}}
+				</ion-item>
+			</ion-list>
+		</div>
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
--->
-<div class="weather">
-	{{currentLocation}}
-	<p id="weather">
-		{{currentTemp}}<i data-icon="&#xe001;" aria-hidden="true" class="{{currentTempIcon}}"></i>
-	</p>
-	<ion-list no-lines>
-		<ion-item>
-			{{weatherState}}
-		</ion-item>
-		<ion-item>
-			Precipitación: {{precipitation}}
-		</ion-item>
-		<ion-item>
-			Humedad: {{humidity}}
-		</ion-item>
-		<ion-item>
-			Presión: {{pressure}}
-		</ion-item>
-		<ion-item>
-			Velocidad del viento: {{wind}}
-		</ion-item>
-	</ion-list>
-</div>
+	</ion-card-content>
+</ion-card>

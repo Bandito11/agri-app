@@ -7,11 +7,25 @@
 <ion-content padding class="page-main">
 	<calendar-component (getDate)="getDate($event)"></calendar-component>
 	<hr>
-	<h4 id="date"> {{currentWeekDay + ' ' + currentDay}} de {{currentMonth}} de {{currentYear}}
-		<span data-icon="&#xe001;" aria-hidden="true" class="{{zodiacImage}}"></span></h4>
-	<moon-phase-component [date]="date"></moon-phase-component>
-	<hr>
-	<weather-component [date]="date"></weather-component>
-	<hr>
-	<crops-component [date]="date"></crops-component>
+	<h4 id="date">{{currentDate}}</h4>
+	<ion-slides pager>
+		<ion-slide>
+			<moon-phase-component [date]="date" (getPhase)="getPhase($event)"></moon-phase-component>
+		</ion-slide>
+		<ion-slide>
+			<weather-component [date]="date"></weather-component>
+		</ion-slide>
+		<ion-slide>
+			<crops-component [date]="date"></crops-component>
+		</ion-slide>
+		<ion-slide>
+			<abundance-component [date]="date"></abundance-component>
+		</ion-slide>
+		<ion-slide>
+			<noprod-component [date]="date"></noprod-component>
+		</ion-slide>
+		<ion-slide>
+			<tips-component [zodiacImage]="zodiacImage" [zodiacName]="zodiacName" [phase]="phase"></tips-component>
+		</ion-slide>
+	</ion-slides>
 </ion-content>

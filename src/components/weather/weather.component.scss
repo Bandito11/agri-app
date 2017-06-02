@@ -1,12 +1,8 @@
 .weather {
-   
     [class^="weather-"]:before, [class*=" weather-"]:before,
     [class^="weather-"]:after, [class*=" weather-"]:after, #weather {   
         font-size: 2.5em;
         margin-left:13.33%; 
-        color:$text-color;
-    }
-    ion-card-header{
         color:$text-color;
     }
 }

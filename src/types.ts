@@ -13,9 +13,6 @@ export interface iCalendar {
 
 export interface iCrop {
     crop: string;
-    abundance: Array<number>;
-    beginOrProduction: Array<number>;
-    noProduction: Array<number>;
     icon: string;
     color: string;
 };
@@ -31,6 +28,15 @@ export interface iMoonPhase {
     english: string;
     full: string;
 };
+
+export interface ITips {
+    zodiac: string;
+    phase: string;
+}
+
+export interface ITip {
+    message: string;
+}
 
 export interface iWeather {
     icon: string;

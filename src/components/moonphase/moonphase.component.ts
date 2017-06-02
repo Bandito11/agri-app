@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import { iCalendar } from './../../types';
 import { MoonPhaseProvider } from './../../providers/moonphase.provider';
 /*
@@ -14,6 +14,8 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
     constructor(private moonPhaseService: MoonPhaseProvider) { }
 
     @Input() date: iCalendar;
+    @Output() getPhase = new EventEmitter();
+
     /**moonphase html properties*/
     moonPhaseImage: string;
     /**Sets the moon phase from the date picked by the user*/
@@ -28,12 +30,13 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
     ngOnChanges(changes) {
         this.getMoonPhase(changes.date.currentValue);
     }
-    
+
     /**Returns the current moonphase  */
     getMoonPhase(date: iCalendar) {
         this.moonPhaseService
             .getMoonPhase(date)
             .then(api => {
+                this.getPhase.emit(api.phase);
                 this.moonPhaseName = api.phase;
                 this.moonPhaseImage = api.icon;
                 this.fullMoon = api.full;
