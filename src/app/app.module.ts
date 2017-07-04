@@ -19,8 +19,10 @@ import { LocationProvider } from '../providers/location.provider';
 import { CropProvider } from '../providers/crops.provider';
 import { NoprodComponent } from '../components/noprod/noprod';
 import { AbundanceComponent } from '../components/abundance/abundance';
-import { TipsComponent } from '../components/tips/tips';
-import { TipsProvider } from '../providers/tips/tips';
+import { TipsComponent } from '../components/tips/tips.component';
+import { TipsProvider } from '../providers/tips.provider';
+import { AuthProvider } from '../providers/auth.provider';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { TipsProvider } from '../providers/tips/tips';
       provide: ErrorHandler,
       useClass: IonicErrorHandler
     },
-    TipsProvider
+    TipsProvider,
+    AuthProvider
   ]
 })
 
