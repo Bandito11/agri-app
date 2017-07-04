@@ -10,7 +10,7 @@
 	<h4 id="date">{{currentDate}}</h4>
 	<ion-slides pager>
 		<ion-slide>
-			<moon-phase-component [date]="date" (getPhase)="getPhase($event)"></moon-phase-component>
+			<moon-phase-component [date]="date" (getPhase)="getPhase($event)" [token]="token"></moon-phase-component>
 		</ion-slide>
 		<ion-slide>
 			<weather-component [date]="date"></weather-component>

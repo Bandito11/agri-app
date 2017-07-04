@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { iCalendar, iWeather } from './../types';
+import { Calendar, Weather, ApiResponse } from './../types';
 import { LocationProvider } from './location.provider';
-import { URL } from './../common';
+import { config } from './../common';
 
 import 'rxjs/add/operator/toPromise';
 /*
@@ -14,17 +14,22 @@ export class WeatherProvider {
   constructor(private http: Http, private locationProvider: LocationProvider) { }
 
   /**Get weather summary*/
-  async getWeather(date: iCalendar): Promise<iWeather> {
-    const location = await this.locationProvider.getLocation();
-    let query = "/weather/" + date.year + '&' + date.month + '&' + date.day + '&' + location.latitude + '&' + location.longitude;
-    return this.http.get(URL + query)
-      .toPromise()
-      .then((response: Response) => response.json())
-      .catch(err => this.handleError(err));
+  async getWeather(date: Calendar): Promise<ApiResponse<Weather>> {
+    try {
+      const location = await this.locationProvider.getLocation();
+      let query = "/weather/" + date.year + '&' + date.month + '&' + date.day + '&' + location.latitude + '&' + location.longitude;
+      return this.http.get(config.URL + query)
+        .toPromise()
+        .then((response: Response) => response.json())
+        .catch(err => this.handleError(err));
+
+    } catch (error) {
+      return this.handleError(error);
+    }
   }
 
-  private handleError(error: any): Promise<any> {
-    return Promise.reject(error.message || error);
+  private handleError(error) {
+    return Promise.reject({ success: false, data: undefined, error: error.message || error });
   }
 }
 
