@@ -19,9 +19,8 @@ import { LocationProvider } from '../providers/location.provider';
 import { CropProvider } from '../providers/crops.provider';
 import { NoprodComponent } from '../components/noprod/noprod';
 import { AbundanceComponent } from '../components/abundance/abundance';
-import { TipsComponent } from '../components/tips/tips.component';
-import { TipsProvider } from '../providers/tips.provider';
-
+import { TipsComponent } from '../components/tips/tips';
+import { TipsProvider } from '../providers/tips/tips';
 
 @NgModule({
   declarations: [

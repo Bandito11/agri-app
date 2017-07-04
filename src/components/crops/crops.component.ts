@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CropProvider } from './../../providers/crops.provider';
-import { Calendar, Crop } from './../../types';
+import { iCalendar, iCrop } from './../../types';
 /*
   Generated class for the Crops component.
 
@@ -12,10 +12,10 @@ import { Calendar, Crop } from './../../types';
     templateUrl: 'crops.component.html'
 })
 export class CropsComponent implements OnInit, OnChanges {
-    @Input() date: Calendar;
+    @Input() date: iCalendar;
 
     /**List of crops */
-    crops: Crop[] = [];
+    crops: iCrop[] = [];
     errorMessage: string;
 
     constructor(private cropService: CropProvider) { }
@@ -33,10 +33,10 @@ export class CropsComponent implements OnInit, OnChanges {
         this.cropService.getCropsByMonth({month: month, mode: 'beginCrops'})
             .subscribe(api => {
                 //TODO: Make three arrays for abundantCrops, noProductionCrops and for beginOrProductionCrops 
-                for (let i = 0; i < api.data.length; i++) {
-                    this.crops[i] = api.data[i];
+                for (let i = 0; i < api.length; i++) {
+                    this.crops[i] = api[i];
                 }
             },
-            error => this.errorMessage = error);
+            error => this.errorMessage = <any>error);
     }
 }

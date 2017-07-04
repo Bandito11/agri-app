@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { Calendar } from './../../types';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
+import { iCalendar } from './../../types';
 import { MoonPhaseProvider } from './../../providers/moonphase.provider';
 /*
     TODO:
@@ -13,9 +13,9 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
 
     constructor(private moonPhaseService: MoonPhaseProvider) { }
 
-    @Input() date: Calendar;
+    @Input() date: iCalendar;
     @Output() getPhase = new EventEmitter();
-    @Input() token: string;
+
     /**moonphase html properties*/
     moonPhaseImage: string;
     /**Sets the moon phase from the date picked by the user*/
@@ -24,24 +24,24 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
     fullMoon: string;
 
     ngOnInit() {
-        this.getMoonPhase({date: this.date, token: this.token});
+        this.getMoonPhase(this.date);
     }
 
     ngOnChanges(changes) {
-        this.getMoonPhase({date: changes.date.currentValue, token: this.token});
+        this.getMoonPhase(changes.date.currentValue);
     }
 
     /**Returns the current moonphase  */
-    getMoonPhase(data: {date: Calendar, token:string}) {
+    getMoonPhase(date: iCalendar) {
         this.moonPhaseService
-            .getMoonPhase({date: data.date, token: data.token})
+            .getMoonPhase(date)
             .then(api => {
-                this.getPhase.emit(api.data[0].phase);
-                this.moonPhaseName = api.data[0].phase;
-                this.moonPhaseImage = api.data[0].icon;
-                this.fullMoon = api.data[0].full;
+                this.getPhase.emit(api.phase);
+                this.moonPhaseName = api.phase;
+                this.moonPhaseImage = api.icon;
+                this.fullMoon = api.full;
             })
-            .catch((error) => { this.moonPhaseName = 'La información no esta disponible.' });
+            .catch((error) => { Promise.reject(error.message || error) });
     }
 }
 

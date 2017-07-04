@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { TipsProvider } from './../../providers/tips.provider';
-import { Tip } from './../../types';
+import { TipsProvider } from './../../providers/tips/tips';
+import { ITip } from './../../types';
 /**
 /**
  * Generated class for the TipsComponent component.
@@ -16,7 +16,7 @@ export class TipsComponent implements OnInit, OnChanges {
   @Input() phase: string;
   @Input() zodiacName: string;
   @Input() zodiacImage: string;
-  tips: Tip[] = [];
+  tips: ITip[] = [];
   errorMessage;
   constructor(private tipService: TipsProvider) { }
 
@@ -32,7 +32,7 @@ export class TipsComponent implements OnInit, OnChanges {
   getTips(data: { zodiac: string, phase: string }) {
     if(data.phase){ 
     this.tipService.getTips({ zodiac: data.zodiac, phase: data.phase })
-      .subscribe(api => this.tips = api.data,
+      .subscribe(api => this.tips = api.result,
       error => this.errorMessage = <any>error);
   }
   }
