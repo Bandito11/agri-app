@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-import { iCalendar } from './../../types';
+import { Calendar } from './../../types';
 import { weekDaysHeader, weekDaysLabels, monthsLabels } from './../../labels'
 /*
   TODO:
@@ -33,7 +33,7 @@ export class CalendarComponent implements OnInit {
   @Output() getDate = new EventEmitter();
 
   /**Used to generate calendar*/
-  calendarDays: Array<iCalendar> = [];
+  calendarDays: Array<Calendar> = [];
 
   /**Used to generate Calendar*/
   currentDate = new Date();
@@ -48,13 +48,13 @@ export class CalendarComponent implements OnInit {
     this.weekDaysLabels = weekDaysLabels;
     this.monthsLabels = monthsLabels;
     this.weekDaysHeader = weekDaysHeader;
-    let calendar: iCalendar = { day: this.currentDate.getDate(), month: this.currentDate.getMonth(), year: this.currentDate.getFullYear() };
+    let calendar: Calendar = { day: this.currentDate.getDate(), month: this.currentDate.getMonth(), year: this.currentDate.getFullYear() };
     calendar.weekDay = this.currentDate.getDay();
     this.choseDay(calendar);
   }
 
   /**When the day is chosen, load the data from the db using the date as a parameter. */
-  private choseDay(date: iCalendar) {
+  private choseDay(date: Calendar) {
     this.getDate.emit(date);
   }
 

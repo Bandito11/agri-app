@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
 
-import { iCalendar } from './../../types';
+import { Calendar } from './../../types';
 import { weekDaysHeader, monthsLabels } from './../../labels'
 /*
   Generated class for the Calendario page.
@@ -26,7 +26,7 @@ export class MainPage implements OnInit {
   }
   currentDate: string;
   weekDaysHeader: string[];
-  date: iCalendar;
+  date: Calendar;
   zodiacName: string;
   zodiacImage: string;
   phase: string;
@@ -37,7 +37,7 @@ export class MainPage implements OnInit {
    * 
    * @memberof MainPage
    */
-  getDate(date: iCalendar) {
+  getDate(date: Calendar) {
     this.date = date;
     const currentDay = date.day;
     const currentMonth = monthsLabels[date.month];
@@ -52,7 +52,7 @@ export class MainPage implements OnInit {
   }
 
   /** Set the image string for the zodiac*/
-  setZodiac(date: iCalendar) {
+  setZodiac(date: Calendar) {
     switch (date.month) {
       case 0:
         if (date.day >= 20 && date.day <= 31) {

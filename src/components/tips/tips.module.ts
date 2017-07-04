@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TipsComponent } from './tips';
+import { TipsComponent } from './tips.component';
 
 @NgModule({
   declarations: [

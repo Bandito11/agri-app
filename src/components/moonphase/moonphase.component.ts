@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
-import { iCalendar } from './../../types';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Calendar } from './../../types';
 import { MoonPhaseProvider } from './../../providers/moonphase.provider';
 /*
     TODO:
@@ -13,7 +13,7 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
 
     constructor(private moonPhaseService: MoonPhaseProvider) { }
 
-    @Input() date: iCalendar;
+    @Input() date: Calendar;
     @Output() getPhase = new EventEmitter();
 
     /**moonphase html properties*/
@@ -32,16 +32,16 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
     }
 
     /**Returns the current moonphase  */
-    getMoonPhase(date: iCalendar) {
+    getMoonPhase(date: Calendar) {
         this.moonPhaseService
             .getMoonPhase(date)
             .then(api => {
-                this.getPhase.emit(api.phase);
-                this.moonPhaseName = api.phase;
-                this.moonPhaseImage = api.icon;
-                this.fullMoon = api.full;
+                this.getPhase.emit(api.data[0].phase);
+                this.moonPhaseName = api.data[0].phase;
+                this.moonPhaseImage = api.data[0].icon;
+                this.fullMoon = api.data[0].full;
             })
-            .catch((error) => { Promise.reject(error.message || error) });
+            .catch((error) => this.moonPhaseName = error.message || error);
     }
 }
 

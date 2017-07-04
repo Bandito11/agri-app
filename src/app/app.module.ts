@@ -17,11 +17,11 @@ import { MoonPhaseProvider } from '../providers/moonphase.provider';
 import { WeatherProvider } from '../providers/weather.provider';
 import { LocationProvider } from '../providers/location.provider';
 import { CropProvider } from '../providers/crops.provider';
-import { NoprodComponent } from '../components/noprod/noprod';
-import { AbundanceComponent } from '../components/abundance/abundance';
+import { NoprodComponent } from '../components/noprod/noproduction.component';
+import { AbundanceComponent } from '../components/abundance/abundance.component';
 import { TipsComponent } from '../components/tips/tips.component';
 import { TipsProvider } from '../providers/tips.provider';
-import { AuthProvider } from '../providers/auth.provider';
+//import { AuthProvider } from '../providers/auth.provider';
 
 
 @NgModule({
@@ -58,8 +58,8 @@ import { AuthProvider } from '../providers/auth.provider';
       provide: ErrorHandler,
       useClass: IonicErrorHandler
     },
-    TipsProvider,
-    AuthProvider
+    TipsProvider
+    //AuthProvider
   ]
 })
 

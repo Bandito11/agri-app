@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { WeatherProvider } from './../../providers/weather.provider';
-import { iCalendar } from './../../types';
+import { Calendar } from './../../types';
 
 /*
     TODO:
@@ -17,7 +17,7 @@ export class WeatherComponent implements OnInit, OnChanges {
 
     constructor(private weatherService: WeatherProvider) { }
 
-    @Input() date: iCalendar;
+    @Input() date: Calendar;
     /**currentTempIcon html properties*/
     currentTempIcon: string;
     /**currentTemp html properties*/
@@ -43,25 +43,26 @@ export class WeatherComponent implements OnInit, OnChanges {
         this.getWeather(changes.date.currentValue);
     }
     /**Returns the summary of the current weather for the date given */
-    getWeather(date: iCalendar) {
+    getWeather(date: Calendar) {
         //TODO:
         //Make an icon array for each possible weather state
         //make an array of possible weather states
         this.weatherService.getWeather(date)
             .then(api => {
-                this.currentLocation = api.location;
-                this.currentTempIcon = api.icon;
-                this.currentTemp = api.temp;
-                this.weatherState = api.weatherState;
-                this.precipitation = api.precipitation;
-                this.humidity = api.humidity;
-                this.wind = api.wind;
-                this.pressure = api.pressure;
+                this.currentLocation = api.data[0].location;
+                this.currentTempIcon = api.data[0].icon;
+                this.currentTemp = api.data[0].temp;
+                this.weatherState = api.data[0].weatherState;
+                this.precipitation = api.data[0].precipitation;
+                this.humidity = api.data[0].humidity;
+                this.wind = api.data[0].wind;
+                this.pressure = api.data[0].pressure;
             })
             .catch(err => this.handleError(err));
     }
 
     handleError(err) {
         console.log(err);
+        this.currentLocation = err;
     }
 }

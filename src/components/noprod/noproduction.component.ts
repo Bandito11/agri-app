@@ -1,21 +1,21 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CropProvider } from './../../providers/crops.provider';
-import { iCalendar, iCrop } from './../../types';
+import { Calendar, Crop } from './../../types';
 /**
- * Generated class for the AbundanceComponent component.
+ * Generated class for the NoprodComponent component.
  *
  * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
  * for more info on Angular Components.
  */
 @Component({
-  selector: 'abundance-component',
-  templateUrl: 'abundance.html'
+  selector: 'noproduction-component',
+  templateUrl: 'noproduction.component.html'
 })
-export class AbundanceComponent implements OnInit, OnChanges{
-  @Input() date: iCalendar;
+export class NoprodComponent implements OnInit, OnChanges {
+  @Input() date: Calendar;
 
   /**List of crops */
-  crops: iCrop[];
+  crops: Crop[] = [];
   errorMessage: string;
 
   constructor(private cropService: CropProvider) { }
@@ -30,11 +30,9 @@ export class AbundanceComponent implements OnInit, OnChanges{
 
   /**Returns the current crops  */
   getCrops(month: number) {
-    this.crops = [];
-    this.cropService.getCropsByMonth({ month: month, mode: 'abundantcrops' })
+    this.cropService.getCropsByMonth({ month: month, mode: 'noproduction' })
       .subscribe(api => {
-        //TODO: Make three arrays for abundantCrops, noProductionCrops and for beginOrProductionCrops 
-        for (let i = 0; i < api.length; i++) {
+        for (let i = 0; i < api.data.length; i++) {
           this.crops[i] = api[i];
         }
       },

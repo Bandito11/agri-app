@@ -45,5 +45,6 @@ export type Weather = {
 export type ApiResponse<T> = {
     success: boolean,
     error: string,
-    data: T[]
+    token?: T;
+    data?: T[]
 }

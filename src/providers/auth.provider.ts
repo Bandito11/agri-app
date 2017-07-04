@@ -1,7 +1,7 @@
 import { Injectable, } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { config } from './../common';
-import { ApiResponse, Crop } from './../types';
+import { ApiResponse } from './../types';
 // import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -9,18 +9,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 
-/**
- * TODO: 
- * a. generate a type to return for getCrops
- * 
- */
-export class CropProvider {
+export class AuthProvider {
 
     constructor(private http: Http) { }
 
-    /**Returns an array containing Abundant and no production*/
-    getCropsByMonth(data: { month: number, mode: string }): Observable<ApiResponse<Crop>> {
-        const query = `${config.URL}/crops/${data.month}&${data.mode}`;
+    getToken(): Observable<ApiResponse<string>> {
+        const query = `${config.URL}/auth/`;
+const headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
         return this.http.get(query)
             .map((response: Response) => response.json())
             .catch(err => this.handleError(err));
