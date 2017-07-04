@@ -1,50 +1,49 @@
-
-export interface iAerisConfig {
-    id: string;
-    secret: string
-};
-
-export interface iCalendar {
+export type Calendar = {
     weekDay?: number,
     day: number,
     month: number,
     year: number
-};
-
-export interface iCrop {
-    crop: string;
-    icon: string;
-    color: string;
-};
-
-export interface iCoordinates {
-    latitude: number;
-    longitude: number;
-};
-
-export interface iMoonPhase {
-    phase: string;
-    icon: string;
-    english: string;
-    full: string;
-};
-
-export interface ITips {
-    zodiac: string;
-    phase: string;
 }
 
-export interface ITip {
-    message: string;
+export type Crop = {
+    crop: string,
+    icon: string,
+    color: string,
 }
 
-export interface iWeather {
-    icon: string;
-    temp: string;
-    weatherState: string;
-    precipitation: string;
-    humidity: string;
-    wind: string;
-    pressure: string;
-    location: string;
-};
+export type Coordinates = {
+    latitude: number,
+    longitude: number,
+}
+
+export type MoonPhase = {
+    phase: string,
+    icon: string,
+    full: string,
+}
+
+export type Tips = {
+    zodiac: string,
+    phase: string
+}
+
+export type Tip = {
+    message: string
+}
+
+export type Weather = {
+    icon: string,
+    temp: string,
+    weatherState: string,
+    precipitation: string,
+    humidity: string,
+    wind: string,
+    pressure: string,
+    location: string
+}
+
+export type ApiResponse<T> = {
+    success: boolean,
+    error: string,
+    data: T[]
+}
