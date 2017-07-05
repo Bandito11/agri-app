@@ -19,21 +19,21 @@ export class WeatherComponent implements OnInit, OnChanges {
 
     @Input() date: Calendar;
     /**currentTempIcon html properties*/
-    currentTempIcon: string;
+    private currentTempIcon: string;
     /**currentTemp html properties*/
-    currentTemp: string;
+    private currentTemp: string;
     /**currentLocation html properties*/
-    currentLocation: string;
+    private currentLocation: string;
     /**weatherState html properties*/
-    weatherState: string; //Weather brief description
+    private weatherState: string; //Weather brief description
     /**precipitation html properties*/
-    precipitation: string;
+    private precipitation: string;
     /**humidity html properties*/
-    humidity: string;
+    private humidity: string;
     /**pressure html properties*/
-    pressure: string;
+    private pressure: string;
     /**wind html properties*/
-    wind: string;
+    private wind: string;
 
     ngOnInit() {
         this.getWeather(this.date);

@@ -1,10 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Calendar } from './../../types';
 import { MoonPhaseProvider } from './../../providers/moonphase.provider';
-/*
-    TODO:
-    Give an animation for when the data is loading
-*/
+
 @Component({
     selector: 'moon-phase-component',
     templateUrl: 'moonphase.component.html'
@@ -14,34 +11,39 @@ export class MoonPhaseComponent implements OnInit, OnChanges {
     constructor(private moonPhaseService: MoonPhaseProvider) { }
 
     @Input() date: Calendar;
+    @Input() token: string;
     @Output() getPhase = new EventEmitter();
 
     /**moonphase html properties*/
-    moonPhaseImage: string;
+    private moonPhaseImage: string;
     /**Sets the moon phase from the date picked by the user*/
-    moonPhaseName: string;
+    private moonPhaseName: string;
     /**Set the date of the next full moon*/
-    fullMoon: string;
+    private fullMoon: string;
 
     ngOnInit() {
-        this.getMoonPhase(this.date);
+        this.getMoonPhase({ date: this.date, token: this.token });
     }
 
     ngOnChanges(changes) {
-        this.getMoonPhase(changes.date.currentValue);
+        try {
+            this.getMoonPhase({ date: changes.date.currentValue, token: changes.token.currentValue });
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     /**Returns the current moonphase  */
-    getMoonPhase(date: Calendar) {
-        this.moonPhaseService
-            .getMoonPhase(date)
-            .then(api => {
-                this.getPhase.emit(api.data[0].phase);
-                this.moonPhaseName = api.data[0].phase;
-                this.moonPhaseImage = api.data[0].icon;
-                this.fullMoon = api.data[0].full;
-            })
-            .catch((error) => this.moonPhaseName = error.message || error);
+    async getMoonPhase(data: { date: Calendar, token: string }) {
+        try {
+            const response = await this.moonPhaseService.getMoonPhase({ date: data.date, token: data.token });
+            this.getPhase.emit(response.data[0].phase);
+            this.moonPhaseName = response.data[0].phase;
+            this.moonPhaseImage = response.data[0].icon;
+            this.fullMoon = response.data[0].full;
+        } catch (error) {
+            this.moonPhaseName = error;
+        }
     }
 }
 

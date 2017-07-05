@@ -16,8 +16,8 @@ export class TipsComponent implements OnInit, OnChanges {
   @Input() phase: string;
   @Input() zodiacName: string;
   @Input() zodiacImage: string;
-  tips: Tip[] = [];
-  errorMessage;
+  private tips: Tip[] = [];
+  private errorMessage;
   constructor(private tipService: TipsProvider) { }
 
   ngOnInit() {

@@ -15,28 +15,28 @@ export class CalendarComponent implements OnInit {
     this.currentDate = new Date();
   }
   /**weekDaysHeader html properties*/
-  weekDaysHeader: Array<string>;
+  private weekDaysHeader: Array<string>;
 
   /**weekDaysLabels html properties*/
-  weekDaysLabels: Array<string>;
+  private weekDaysLabels: Array<string>;
 
   /**monthsLabels html properties*/
-  monthsLabels: Array<string>;
+  private monthsLabels: Array<string>;
 
   /**Used to get the month and year to start the calendar*/
-  month: number;
+  private month: number;
 
   /**Used to get the year to start the calendar*/
-  year: number;
+  private year: number;
 
   /**Date chosen by the user to be shown in the card Header*/
   @Output() getDate = new EventEmitter();
 
   /**Used to generate calendar*/
-  calendarDays: Array<Calendar> = [];
+  private calendarDays: Array<Calendar> = [];
 
   /**Used to generate Calendar*/
-  currentDate = new Date();
+  private currentDate = new Date();
 
   ngOnInit() {
     this.createCalendar(null, null);

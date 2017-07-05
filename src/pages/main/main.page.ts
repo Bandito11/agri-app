@@ -1,39 +1,53 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
-
+import { Slides } from 'ionic-angular';
 import { Calendar } from './../../types';
 import { weekDaysHeader, monthsLabels } from './../../labels'
-/*
-  Generated class for the Calendario page.
+import { AuthProvider } from './../../providers/auth.provider';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-main',
   templateUrl: 'main.page.html'
 })
 export class MainPage implements OnInit {
 
-  constructor(private navCtrl: NavController) {
+  constructor(private authProvider: AuthProvider) {
   }
 
   @ViewChild(Slides) slides: Slides;
 
   ngOnInit(): void {
+    this.getToken();
     this.slides.autoHeight = true;
     this.weekDaysHeader = weekDaysHeader;
   }
-  currentDate: string;
-  weekDaysHeader: string[];
-  date: Calendar;
-  zodiacName: string;
-  zodiacImage: string;
-  phase: string;
+
+  private token: string = '';
+  private currentDate: string;
+  private weekDaysHeader: string[];
+  private date: Calendar;
+  private zodiacName: string;
+  private zodiacImage: string;
+  private phase: string;
   /**
    * 
    * 
-   * @param {iCalendar} date 
+   * @memberof MainPage
+   */
+  async getToken() {
+    try {
+      const response = await this.authProvider.getToken();
+      if (response.success == true) {
+        this.token = response.token;
+      }
+    } catch (error) {
+      console.error(error)
+      this.getToken();
+    }
+  }
+  /**
+   * 
+   * 
+   * @param {Calendar} date 
    * 
    * @memberof MainPage
    */
@@ -46,12 +60,21 @@ export class MainPage implements OnInit {
     this.currentDate = `${currentWeekDay} ${currentDay} de ${currentMonth} de ${currentYear}`;
     this.setZodiac(date);
   }
-
+  /**
+   * 
+   * 
+   * @param {string} phase 
+   * @memberof MainPage
+   */
   getPhase(phase: string) {
     this.phase = phase;
   }
-
-  /** Set the image string for the zodiac*/
+  /**
+   * 
+   * 
+   * @param {Calendar} date 
+   * @memberof MainPage
+   */
   setZodiac(date: Calendar) {
     switch (date.month) {
       case 0:

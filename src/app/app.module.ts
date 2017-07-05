@@ -21,7 +21,7 @@ import { NoprodComponent } from '../components/noprod/noproduction.component';
 import { AbundanceComponent } from '../components/abundance/abundance.component';
 import { TipsComponent } from '../components/tips/tips.component';
 import { TipsProvider } from '../providers/tips.provider';
-//import { AuthProvider } from '../providers/auth.provider';
+import { AuthProvider } from '../providers/auth.provider';
 
 
 @NgModule({
@@ -58,8 +58,8 @@ import { TipsProvider } from '../providers/tips.provider';
       provide: ErrorHandler,
       useClass: IonicErrorHandler
     },
-    TipsProvider
-    //AuthProvider
+    TipsProvider,
+    AuthProvider
   ]
 })
 

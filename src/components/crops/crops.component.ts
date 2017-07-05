@@ -15,8 +15,8 @@ export class CropsComponent implements OnInit, OnChanges {
     @Input() date: Calendar;
 
     /**List of crops */
-    crops: Crop[] = [];
-    errorMessage: string;
+    private crops: Crop[] = [];
+    private errorMessage: string;
 
     constructor(private cropService: CropProvider) { }
 
