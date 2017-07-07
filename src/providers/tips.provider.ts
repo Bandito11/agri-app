@@ -26,9 +26,8 @@ export class TipsProvider {
       const err = body.error || JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     } else {
-      errMsg = error.message ? error.message : error;
+      errMsg = error;
     }
-    console.error(errMsg);
     return Observable.throw(errMsg);
   }
 }
