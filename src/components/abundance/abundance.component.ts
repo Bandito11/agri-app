@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CropProvider } from './../../providers/crops.provider';
 import { Calendar, Crop } from './../../types';
 /**
@@ -8,84 +8,36 @@ import { Calendar, Crop } from './../../types';
  * for more info on Angular Components.
  */
 @Component({
-    selector: 'abundance-component',
-    templateUrl: 'abundance.component.html'
+  selector: 'abundance-component',
+  templateUrl: 'abundance.component.html'
 })
-export class AbundanceComponent implements OnChanges {
-    @Input() date: Calendar;
-    @Input() token: string;
+export class AbundanceComponent implements OnInit, OnChanges{
+  @Input() date: Calendar;
 
-    /**
-     * List of crops
-     * 
-     * @private
-     * @type {Crop[]}
-     * @memberof CropsComponent
-     */
-    private crops: Crop[] = [];
-    /**
-     * 
-     * 
-     * @private
-     * @type {string}
-     * @memberof CropsComponent
-     */
-    private errorMessage: string;
-    /**
-     * 
-     * 
-     * @private
-     * @memberof CropsComponent
-     */
-    private mode = 'abundantcrops';
-    /**
-    * Temporary date to be used on ngOnChanges
-    * 
-    * @private
-    * @type {Calendar}
-    * @memberof MoonPhaseComponent
-    */
-    private tempDate: Calendar;
-    /**
-     * Temporary token to be used on ngOnChanges
-     * 
-     * @private
-     * @type {string}
-     * @memberof MoonPhaseComponent
-     */
-    private tempToken: string;
+  /**List of crops */
+  private crops: Crop[];
+  private errorMessage: string;
 
-    constructor(private cropService: CropProvider) { }
+  constructor(private cropService: CropProvider) { }
 
-    ngOnChanges(changes: SimpleChanges) {
-        for (let propName in changes) {
-            if (propName == 'date') {
-                this.tempDate = changes[propName].currentValue;
-            }
-            if (propName == 'token') {
-                this.tempToken = changes[propName].currentValue;
-            }
+  ngOnInit() {
+    this.getCrops(this.date.month);
+  }
+
+  ngOnChanges(changes) {
+    this.getCrops(this.date.month);
+  }
+
+  /**Returns the current crops  */
+  getCrops(month: number) {
+    this.crops = [];
+    this.cropService.getCropsByMonth({ month: month, mode: 'abundantcrops' })
+      .subscribe(api => {
+        //TODO: Make three arrays for abundantCrops, noProductionCrops and for beginOrProductionCrops 
+        for (let i = 0; i < api.data.length; i++) {
+          this.crops[i] = api[i];
         }
-        if (this.tempDate && this.tempToken) {
-            try {
-                this.getCrops({ month: this.tempDate.month, token: this.tempToken });
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    }
-
-    /**Returns the current crops  */
-    getCrops(data: { month: number, token: string }) {
-        this.cropService.getCropsByMonth({ month: data.month, mode: this.mode, token: data.token })
-            .subscribe(api => {
-                try {
-                    this.crops = api.data;
-                } catch (error) {
-                    this.errorMessage = api.error;
-                }
-            },
-            msg => this.errorMessage = msg.error);
-    }
-
+      },
+      error => this.errorMessage = error);
+  }
 }
