@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { WeatherProvider } from './../../providers/weather.provider';
 import { Calendar } from './../../types';
 
@@ -13,55 +13,136 @@ import { Calendar } from './../../types';
     templateUrl: 'weather.component.html'
 })
 
-export class WeatherComponent implements OnInit, OnChanges {
+export class WeatherComponent implements OnChanges {
 
-    constructor(private weatherService: WeatherProvider) { }
+    constructor(private weatherProvider: WeatherProvider) { }
 
+
+    @Input() token: string;
     @Input() date: Calendar;
-    /**currentTempIcon html properties*/
-    currentTempIcon: string;
-    /**currentTemp html properties*/
-    currentTemp: string;
-    /**currentLocation html properties*/
-    currentLocation: string;
-    /**weatherState html properties*/
-    weatherState: string; //Weather brief description
-    /**precipitation html properties*/
-    precipitation: string;
-    /**humidity html properties*/
-    humidity: string;
-    /**pressure html properties*/
-    pressure: string;
-    /**wind html properties*/
-    wind: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private currentTempIcon: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private currentTemp: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private currentLocation: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private weatherState: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private precipitation: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private humidity: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private pressure: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private wind: string;
+    /**
+     * Temporary date to be used on ngOnChanges
+     * 
+     * @private
+     * @type {Calendar}
+     * @memberof WeatherComponent
+     */
+    private tempDate: Calendar;
+    /**
+     * Temporary token to be used on ngOnChanges
+     * 
+     * @private
+     * @type {string}
+     * @memberof WeatherComponent
+     */
+    private tempToken: string;
 
-    ngOnInit() {
-        this.getWeather(this.date);
-    }
-
-    ngOnChanges(changes) {
-        this.getWeather(changes.date.currentValue);
+    ngOnChanges(changes: SimpleChanges) {
+        for (let propName in changes) {
+            if (propName == 'date') {
+                this.tempDate = changes[propName].currentValue;
+            }
+            if (propName == 'token') {
+                this.tempToken = changes[propName].currentValue;
+            }
+        }
+        if (this.tempDate && this.tempToken) {
+            try {
+                this.getWeather({ date: this.tempDate, token: this.tempToken });
+            } catch (error) {
+                console.error(error);
+            }
+        }
     }
     /**Returns the summary of the current weather for the date given */
-    getWeather(date: Calendar) {
-        //TODO:
-        //Make an icon array for each possible weather state
-        //make an array of possible weather states
-        this.weatherService.getWeather(date)
-            .then(api => {
-                this.currentLocation = api.data[0].location;
-                this.currentTempIcon = api.data[0].icon;
-                this.currentTemp = api.data[0].temp;
-                this.weatherState = api.data[0].weatherState;
-                this.precipitation = api.data[0].precipitation;
-                this.humidity = api.data[0].humidity;
-                this.wind = api.data[0].wind;
-                this.pressure = api.data[0].pressure;
-            })
-            .catch(err => this.handleError(err));
+    async getWeather(data: { date: Calendar, token: string }) {
+        try {
+            const response = await this.weatherProvider.getWeather({ date: data.date, token: data.token });
+            if (response.success == true) {
+                this.currentLocation = response.data[0].location;
+                this.currentTempIcon = response.data[0].icon;
+                this.currentTemp = response.data[0].temp;
+                this.weatherState = response.data[0].weatherState;
+                this.precipitation = response.data[0].precipitation;
+                this.humidity = response.data[0].humidity;
+                this.wind = response.data[0].wind;
+                this.pressure = response.data[0].pressure;
+            } else if (response.error == null) {
+                throw new Error(response.error);
+            } else {
+                this.handleError(response.error);
+            }
+        } catch (error) {
+            this.handleError(error);
+        }
     }
 
-    handleError(err) {
-        console.log(err);
+    handleError(error) {
+        console.log(error);
+        this.currentLocation = error;
     }
 }

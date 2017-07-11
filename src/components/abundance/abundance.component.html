@@ -1,6 +1,6 @@
 <ion-card padding>
-	<ion-card-header>
-		¿Qué no debería sembrar hoy?
+	<ion-card-header text-wrap>
+		¿Qué frutos o vegetales están en abundancia?
 	</ion-card-header>
 	<ion-card-content>
 		<div class="crops">
@@ -14,3 +14,6 @@
 		</div>
 	</ion-card-content>
 </ion-card>
+<div *ngIf="errorMessage">
+	{{errorMessage}}
+</div>

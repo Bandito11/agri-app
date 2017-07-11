@@ -35,6 +35,6 @@ export class LocationProvider {
      * @memberof LocationProvider
      */
     private handleError(error) {
-        return Promise.reject({error: error.message || error});
+        return Promise.reject(error.message || error);
     }
 }

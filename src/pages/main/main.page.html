@@ -13,19 +13,19 @@
 			<moon-phase-component [date]="date" (getPhase)="getPhase($event)" [token]="token"></moon-phase-component>
 		</ion-slide>
 		<ion-slide>
-			<weather-component [date]="date"></weather-component>
+			<weather-component [date]="date" [token]="token"></weather-component>
 		</ion-slide>
 		<ion-slide>
-			<crops-component [date]="date"></crops-component>
+			<crops-component [date]="date" [token]="token"></crops-component>
 		</ion-slide>
 		<ion-slide>
-			<abundance-component [date]="date"></abundance-component>
+			<abundance-component [date]="date" [token]="token"></abundance-component>
 		</ion-slide>
 		<ion-slide>
-			<noprod-component [date]="date"></noprod-component>
+			<noproduction-component [date]="date" [token]="token"></noproduction-component>
 		</ion-slide>
 		<ion-slide>
-			<tips-component [zodiacImage]="zodiacImage" [zodiacName]="zodiacName" [phase]="phase"></tips-component>
+			<tips-component [zodiacImage]="zodiacImage" [zodiacName]="zodiacName" [phase]="phase" [token]="token" ></tips-component>
 		</ion-slide>
 	</ion-slides>
 </ion-content>

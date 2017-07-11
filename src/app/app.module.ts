@@ -4,9 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
-
 import { HttpModule } from '@angular/http';
-
 import { MyApp } from './app.component';
 import { MainPage } from '../pages/main/main.page';
 import { CalendarComponent } from '../components/calendar/calendar.component';
@@ -17,10 +15,11 @@ import { MoonPhaseProvider } from '../providers/moonphase.provider';
 import { WeatherProvider } from '../providers/weather.provider';
 import { LocationProvider } from '../providers/location.provider';
 import { CropProvider } from '../providers/crops.provider';
-import { NoprodComponent } from '../components/noprod/noprod';
-import { AbundanceComponent } from '../components/abundance/abundance';
+import { NoprodComponent } from '../components/noproduction/noproduction.component';
+import { AbundanceComponent } from '../components/abundance/abundance.component';
 import { TipsComponent } from '../components/tips/tips.component';
 import { TipsProvider } from '../providers/tips.provider';
+import { AuthProvider } from '../providers/auth.provider';
 
 
 @NgModule({
@@ -57,7 +56,8 @@ import { TipsProvider } from '../providers/tips.provider';
       provide: ErrorHandler,
       useClass: IonicErrorHandler
     },
-    TipsProvider
+    TipsProvider,
+    AuthProvider
   ]
 })
 

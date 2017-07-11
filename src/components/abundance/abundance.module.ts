@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AbundanceComponent } from './abundance';
+import { AbundanceComponent } from './abundance.component';
 
 @NgModule({
   declarations: [

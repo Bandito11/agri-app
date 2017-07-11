@@ -1,48 +1,94 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Calendar } from './../../types';
 import { MoonPhaseProvider } from './../../providers/moonphase.provider';
-/*
-    TODO:
-    Give an animation for when the data is loading
-*/
+
 @Component({
     selector: 'moon-phase-component',
     templateUrl: 'moonphase.component.html'
 })
-export class MoonPhaseComponent implements OnInit, OnChanges {
+export class MoonPhaseComponent implements OnChanges {
 
-    constructor(private moonPhaseService: MoonPhaseProvider) { }
+    constructor(private moonPhaseProvider: MoonPhaseProvider) { }
 
     @Input() date: Calendar;
-    @Output() getPhase = new EventEmitter();
     @Input() token: string;
-    /**moonphase html properties*/
-    moonPhaseImage: string;
-    /**Sets the moon phase from the date picked by the user*/
-    moonPhaseName: string;
-    /**Set the date of the next full moon*/
-    fullMoon: string;
+    @Output() getPhase = new EventEmitter();
 
-    ngOnInit() {
-        this.getMoonPhase({date: this.date, token: this.token});
-    }
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof MoonPhaseComponent
+     */
+    private moonPhaseImage: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof MoonPhaseComponent
+     */
+    private moonPhaseName: string;
+    /**
+     * html properties
+     * 
+     * @private
+     * @type {string}
+     * @memberof MoonPhaseComponent
+     */
+    private fullMoon: string;
+    /**
+     * Temporary date to be used on ngOnChanges
+     * 
+     * @private
+     * @type {Calendar}
+     * @memberof MoonPhaseComponent
+     */
+    private tempDate: Calendar;
+    /**
+     * Temporary token to be used on ngOnChanges
+     * 
+     * @private
+     * @type {string}
+     * @memberof MoonPhaseComponent
+     */
+    private tempToken: string;
 
-    ngOnChanges(changes) {
-        this.getMoonPhase({date: changes.date.currentValue, token: this.token});
+    ngOnChanges(changes: SimpleChanges) {
+        for (let propName in changes) {
+            if (propName == 'date') {
+                this.tempDate = changes[propName].currentValue;
+            }
+            if (propName == 'token') {
+                this.tempToken = changes[propName].currentValue;
+            }
+        }
+        if (this.tempDate && this.tempToken) {
+            try {
+                this.getMoonPhase({ date: this.tempDate, token: this.tempToken });
+            } catch (error) {
+                console.error(error);
+            }
+        }
     }
 
     /**Returns the current moonphase  */
-    getMoonPhase(data: {date: Calendar, token:string}) {
-        this.moonPhaseService
-            .getMoonPhase({date: data.date, token: data.token})
-            .then(api => {
-                this.getPhase.emit(api.data[0].phase);
-                this.moonPhaseName = api.data[0].phase;
-                this.moonPhaseImage = api.data[0].icon;
-                this.fullMoon = api.data[0].full;
-            })
-            .catch((error) => { this.moonPhaseName = 'La información no esta disponible.' });
+    async getMoonPhase(data: { date: Calendar, token: string }) {
+        try {
+            const response = await this.moonPhaseProvider.getMoonPhase({ date: data.date, token: data.token });
+            if (response.success == true) {
+                this.getPhase.emit(response.data.phase);
+                this.moonPhaseName = response.data.phase;
+                this.moonPhaseImage = response.data.icon;
+                this.fullMoon = response.data.full;
+            }
+        } catch (error) {
+            console.error(error);
+            this.moonPhaseName = 'No se pudo recopilar la data en estos instantes';
+        }
     }
+
 }
 
 

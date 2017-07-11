@@ -1,17 +1,17 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CropProvider } from './../../providers/crops.provider';
 import { Calendar, Crop } from './../../types';
-/*
-  Generated class for the Crops component.
-
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
-*/
+/**
+ * Generated class for the AbundanceComponent component.
+ *
+ * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ * for more info on Angular Components.
+ */
 @Component({
-    selector: 'crops-component',
-    templateUrl: 'crops.component.html'
+    selector: 'abundance-component',
+    templateUrl: 'abundance.component.html'
 })
-export class CropsComponent implements OnChanges {
+export class AbundanceComponent implements OnChanges {
     @Input() date: Calendar;
     @Input() token: string;
 
@@ -37,7 +37,7 @@ export class CropsComponent implements OnChanges {
      * @private
      * @memberof CropsComponent
      */
-    private mode = 'beginCrops';
+    private mode = 'abundantcrops';
     /**
     * Temporary date to be used on ngOnChanges
     * 
@@ -87,4 +87,5 @@ export class CropsComponent implements OnChanges {
             },
             msg => this.errorMessage = msg.error);
     }
+
 }
