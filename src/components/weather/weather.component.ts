@@ -123,14 +123,14 @@ export class WeatherComponent implements OnChanges {
         try {
             const response = await this.weatherProvider.getWeather({ date: data.date, token: data.token });
             if (response.success == true) {
-                this.currentLocation = response.data[0].location;
-                this.currentTempIcon = response.data[0].icon;
-                this.currentTemp = response.data[0].temp;
-                this.weatherState = response.data[0].weatherState;
-                this.precipitation = response.data[0].precipitation;
-                this.humidity = response.data[0].humidity;
-                this.wind = response.data[0].wind;
-                this.pressure = response.data[0].pressure;
+                this.currentLocation = response.data.location;
+                this.currentTempIcon = response.data.icon;
+                this.currentTemp = response.data.temp;
+                this.weatherState = response.data.weatherState;
+                this.precipitation = response.data.precipitation;
+                this.humidity = response.data.humidity;
+                this.wind = response.data.wind;
+                this.pressure = response.data.pressure;
             } else if (response.error == null) {
                 throw new Error(response.error);
             } else {
@@ -144,5 +144,13 @@ export class WeatherComponent implements OnChanges {
     handleError(error) {
         console.log(error);
         this.currentLocation = error;
+        this.currentTempIcon = "";
+        this.currentTemp = "";
+        this.weatherState = "";
+        this.precipitation = "";
+        this.humidity = "";
+        this.wind = "";
+        this.pressure = "";
+
     }
 }

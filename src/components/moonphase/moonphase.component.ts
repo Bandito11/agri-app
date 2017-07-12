@@ -86,6 +86,8 @@ export class MoonPhaseComponent implements OnChanges {
         } catch (error) {
             console.error(error);
             this.moonPhaseName = 'No se pudo recopilar la data en estos instantes';
+            this.moonPhaseImage = '';
+            this.fullMoon = '';
         }
     }
 
