@@ -16,8 +16,8 @@ export class MainPage implements OnInit {
   @ViewChild(Slides) slides: Slides;
 
   ngOnInit(): void {
-    this.getToken();
     this.slides.autoHeight = true;
+    this.getToken();
     this.weekDaysHeader = weekDaysHeader;
   }
 
