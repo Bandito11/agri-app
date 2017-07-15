@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Calendar, Weather, ApiResponse, Coordinates } from './../types';
-import { LocationProvider } from './location.provider';
 import { config } from './../common';
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class WeatherProvider {
-  constructor(private http: Http, private locationProvider: LocationProvider) { }
 
+  constructor(private http: Http) { }
+  
   /**
    * Get weather summary or forecast
    * 
@@ -16,26 +18,18 @@ export class WeatherProvider {
    * @returns {Promise<ApiResponse<Weather>>} 
    * @memberof WeatherProvider
    */
-  async getWeather(data: { date: Calendar, token: string }): Promise<ApiResponse<Weather>> {
-    let location: Coordinates;
-    try {
-      location = await this.locationProvider.getLocation();
-    } catch (error) {
-      console.error(error);
-      Promise.reject(error);
-    }
+  getWeather(data: { date: Calendar, token: string, location: Coordinates }): Observable<ApiResponse<Weather>> {
     const params = { 'token': data.token };
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers, params: params });
-    const query = `${config.URL}/weather/${data.date.year}&${data.date.month}&${data.date.day}&${location.latitude}&${location.longitude}`;
+    const query = `${config.URL}/weather/${data.date.year}&${data.date.month}&${data.date.day}&${data.location.latitude}&${data.location.longitude}`;
     return this.http.get(query, options)
-      .toPromise()
-      .then((response: Response) => response.json())
+      .map((response: Response) => response.json())
       .catch(err => this.handleError(err));
   }
 
-  private handleError(error): Promise<any> {
-    return Promise.reject(error);
+  private handleError(error) {
+    return Observable.throw(error);
   }
 }
 

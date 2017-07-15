@@ -10,10 +10,10 @@
 	<h4 id="date">{{currentDate}}</h4>
 	<ion-slides pager>
 		<ion-slide>
-			<moon-phase-component [date]="date" (getPhase)="getPhase($event)" [token]="token"></moon-phase-component>
+			<moon-phase-component [date]="date" (getPhase)="getPhase($event)" [token]="token" [location]="location"></moon-phase-component>
 		</ion-slide>
 		<ion-slide>
-			<weather-component [date]="date" [token]="token"></weather-component>
+			<weather-component [date]="date" [token]="token" [location]="location"></weather-component>
 		</ion-slide>
 		<ion-slide>
 			<crops-component [date]="date" [token]="token"></crops-component>
@@ -25,7 +25,7 @@
 			<noproduction-component [date]="date" [token]="token"></noproduction-component>
 		</ion-slide>
 		<ion-slide>
-			<tips-component [zodiacImage]="zodiacImage" [zodiacName]="zodiacName" [phase]="phase" [token]="token" ></tips-component>
+			<tips-component [zodiacImage]="zodiacImage" [zodiacName]="zodiacName" [phase]="phase" [token]="token"></tips-component>
 		</ion-slide>
 	</ion-slides>
 </ion-content>

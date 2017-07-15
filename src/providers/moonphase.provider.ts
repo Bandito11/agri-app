@@ -1,42 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Calendar, MoonPhase, ApiResponse, Coordinates } from './../types';
-import { LocationProvider } from './location.provider';
 import { config } from './../common';
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class MoonPhaseProvider {
 
-  constructor(public http: Http, private locationProvider: LocationProvider) { }
-/**
- * Will return the moonphase
- * 
- * @param {{ date: Calendar, token: string }} data 
- * @returns {Promise<ApiResponse<MoonPhase>>} 
- * @memberof MoonPhaseProvider
- */
-  async getMoonPhase(data: { date: Calendar, token: string }): Promise<ApiResponse<MoonPhase>> {
-    let location: Coordinates;
-    try {
-      location = await this.locationProvider.getLocation();
-    } catch (error) {
-      console.error(error);
-      Promise.reject(error);
-    }
+  constructor(private http: Http) { }
+  
+  /**
+   * Will return the current moonphase
+   * 
+   * @param {{ date: Calendar, token: string }} data 
+   * @returns {Observable<ApiResponse<MoonPhase>>} 
+   * @memberof MoonPhaseProvider
+   */ 
+  getMoonPhase(data: { date: Calendar, token: string, location: Coordinates }): Observable<ApiResponse<MoonPhase>> {
     const today = new Date();
     const params = { 'token': data.token };
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers, params: params });
-    const query = `${config.URL}/moonphase/${data.date.year}&${data.date.month}&${data.date.day}&${location.latitude}&${location.longitude}&${today.getHours()}&${today.getMinutes()}&${today.getSeconds()}`;
+    const query = `${config.URL}/moonphase/${data.date.year}&${data.date.month}&${data.date.day}&${data.location.latitude}&${data.location.longitude}&${today.getHours()}&${today.getMinutes()}&${today.getSeconds()}`;
     return this.http.get(query, options)
-      .toPromise()
-      .then((response: Response) => response.json())
+      .map((response: Response) => response.json())
       .catch(err => this.handleError(err));
   }
 
   private handleError(error) {
-    return Promise.reject(error);
+    return Observable.throw(error);
   }
 }
 

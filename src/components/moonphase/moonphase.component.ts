@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { Calendar } from './../../types';
+import { Calendar, Coordinates } from './../../types';
 import { MoonPhaseProvider } from './../../providers/moonphase.provider';
 
 @Component({
@@ -13,6 +13,7 @@ export class MoonPhaseComponent implements OnChanges {
     @Input() date: Calendar;
     @Input() token: string;
     @Output() getPhase = new EventEmitter();
+    @Input() location: Coordinates;
 
     /**
      * html properties
@@ -54,9 +55,20 @@ export class MoonPhaseComponent implements OnChanges {
      * @memberof MoonPhaseComponent
      */
     private tempToken: string;
+    /**
+     * Temporary coordinates to be used on ngOnChanges
+     * 
+     * @private
+     * @type {Coordinates}
+     * @memberof MoonPhaseComponent
+     */
+    private tempLocation: Coordinates;
 
     ngOnChanges(changes: SimpleChanges) {
         for (let propName in changes) {
+            if (propName == 'location') {
+                this.tempLocation = changes[propName].currentValue;
+            }
             if (propName == 'date') {
                 this.tempDate = changes[propName].currentValue;
             }
@@ -64,31 +76,43 @@ export class MoonPhaseComponent implements OnChanges {
                 this.tempToken = changes[propName].currentValue;
             }
         }
-        if (this.tempDate && this.tempToken) {
-            try {
-                this.getMoonPhase({ date: this.tempDate, token: this.tempToken });
-            } catch (error) {
-                console.error(error);
-            }
+        if (this.tempDate && this.tempToken && this.tempLocation) {
+            this.getMoonPhase({
+                date: this.tempDate,
+                token: this.tempToken,
+                location: this.tempLocation
+            });
         }
     }
 
     /**Returns the current moonphase  */
-    async getMoonPhase(data: { date: Calendar, token: string }) {
-        try {
-            const response = await this.moonPhaseProvider.getMoonPhase({ date: data.date, token: data.token });
-            if (response.success == true) {
-                this.getPhase.emit(response.data.phase);
-                this.moonPhaseName = response.data.phase;
-                this.moonPhaseImage = response.data.icon;
-                this.fullMoon = response.data.full;
-            }
-        } catch (error) {
-            console.error(error);
-            this.moonPhaseName = 'No se pudo recopilar la data en estos instantes';
-            this.moonPhaseImage = '';
-            this.fullMoon = '';
-        }
+    getMoonPhase(data: { date: Calendar, token: string, location: Coordinates }) {
+        this.moonPhaseProvider.getMoonPhase({
+            date: data.date,
+            token: data.token,
+            location: data.location
+        })
+            .subscribe(response => {
+                try {
+                    if (response.success == true) {
+                        this.getPhase.emit(response.data.phase);
+                        this.moonPhaseName = response.data.phase;
+                        this.moonPhaseImage = response.data.icon;
+                        this.fullMoon = response.data.full;
+                    } else {
+                        this.handleError(response.error);
+                    }
+                } catch (error) {
+                    this.handleError(error);
+                }
+            }, error => this.handleError(error)
+            )
+    }
+
+    handleError(error) {
+        this.moonPhaseName = error;
+        this.moonPhaseImage = '';
+        this.fullMoon = '';
     }
 
 }

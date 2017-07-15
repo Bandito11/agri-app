@@ -1,8 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Slides } from 'ionic-angular';
-import { Calendar } from './../../types';
+import { Calendar, Coordinates } from './../../types';
 import { weekDaysHeader, monthsLabels } from './../../labels'
 import { AuthProvider } from './../../providers/auth.provider';
+import { LocationProvider } from './../../providers/location.provider';
 
 @Component({
   selector: 'page-main',
@@ -10,14 +11,17 @@ import { AuthProvider } from './../../providers/auth.provider';
 })
 export class MainPage implements OnInit {
 
-  constructor(private authProvider: AuthProvider) {
-  }
+  constructor(
+    private authProvider: AuthProvider,
+    private locationProvider: LocationProvider
+  ) { }
 
   @ViewChild(Slides) slides: Slides;
 
   ngOnInit(): void {
     this.slides.autoHeight = true;
     this.getToken();
+    this.getLocation();
     this.weekDaysHeader = weekDaysHeader;
   }
 
@@ -28,18 +32,27 @@ export class MainPage implements OnInit {
   private zodiacName: string;
   private zodiacImage: string;
   private phase: string;
+  private location: Coordinates;
   /**
    * 
    * 
    * @memberof MainPage
    */
-  async getToken() {
+  getToken() {
+    this.authProvider.getToken()
+      .subscribe(
+      response => {
+        this.token = response.token;
+      },
+      error => this.getToken()
+      );
+  }
+  async getLocation() {
     try {
-      const response = await this.authProvider.getToken();
-      this.token = response.token;
+      const location = await this.locationProvider.getLocation();
+      this.location = location;
     } catch (error) {
-      console.error(error);
-      this.getToken();
+      this.getLocation();
     }
   }
   /**

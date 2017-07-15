@@ -17,7 +17,7 @@ export class WeatherComponent implements OnChanges {
 
     constructor(private weatherProvider: WeatherProvider) { }
 
-
+    @Input() location: Coordinates;
     @Input() token: string;
     @Input() date: Calendar;
     /**
@@ -100,9 +100,20 @@ export class WeatherComponent implements OnChanges {
      * @memberof WeatherComponent
      */
     private tempToken: string;
+    /**
+     * Temporary coordinates to be used on ngOnChanges
+     * 
+     * @private
+     * @type {Coordinates}
+     * @memberof MoonPhaseComponent
+     */
+    private tempLocation: Coordinates;
 
     ngOnChanges(changes: SimpleChanges) {
         for (let propName in changes) {
+            if (propName == 'location') {
+                this.tempLocation = changes[propName].currentValue;
+            }
             if (propName == 'date') {
                 this.tempDate = changes[propName].currentValue;
             }
@@ -110,35 +121,48 @@ export class WeatherComponent implements OnChanges {
                 this.tempToken = changes[propName].currentValue;
             }
         }
-        if (this.tempDate && this.tempToken) {
+        if (this.tempDate && this.tempToken && this.tempLocation) {
             try {
-                this.getWeather({ date: this.tempDate, token: this.tempToken });
+                this.getWeather({
+                    date: this.tempDate,
+                    token: this.tempToken,
+                    location: this.tempLocation
+                });
             } catch (error) {
                 console.error(error);
             }
         }
     }
     /**Returns the summary of the current weather for the date given */
-    async getWeather(data: { date: Calendar, token: string }) {
-        try {
-            const response = await this.weatherProvider.getWeather({ date: data.date, token: data.token });
-            if (response.success == true) {
-                this.currentLocation = response.data.location;
-                this.currentTempIcon = response.data.icon;
-                this.currentTemp = response.data.temp;
-                this.weatherState = response.data.weatherState;
-                this.precipitation = response.data.precipitation;
-                this.humidity = response.data.humidity;
-                this.wind = response.data.wind;
-                this.pressure = response.data.pressure;
-            } else if (response.error == null) {
-                throw new Error(response.error);
-            } else {
-                this.handleError(response.error);
-            }
-        } catch (error) {
-            this.handleError(error);
-        }
+    async getWeather(data: { date: Calendar, token: string, location: Coordinates }) {
+        this.weatherProvider.getWeather({
+            date: data.date,
+            token: data.token,
+            location: data.location
+        })
+            .subscribe(
+            response => {
+                try {
+                    if (response.success == true) {
+                        this.currentLocation = response.data.location;
+                        this.currentTempIcon = response.data.icon;
+                        this.currentTemp = response.data.temp;
+                        this.weatherState = response.data.weatherState;
+                        this.precipitation = response.data.precipitation;
+                        this.humidity = response.data.humidity;
+                        this.wind = response.data.wind;
+                        this.pressure = response.data.pressure;
+                    } else if (response.error == null) {
+                        throw new Error(response.error);
+                    } else {
+                        this.handleError(response.error);
+                    }
+                } catch (error) {
+                    this.handleError(error);
+                }
+            },
+            error => this.handleError(error)
+            )
     }
 
     handleError(error) {

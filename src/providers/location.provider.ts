@@ -16,7 +16,7 @@ export class LocationProvider {
     getLocation(): Promise<Coordinates> {
         return new Promise((resolve, reject) => {
             this.geolocation.getCurrentPosition()
-                .then((resp) => {
+                .then(resp => {
                     let coordinates: Coordinates = { latitude: 0, longitude: 0 };
                     coordinates.latitude = resp.coords.latitude;
                     coordinates.longitude = resp.coords.longitude;

@@ -2,7 +2,7 @@ import { Injectable, } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { config } from './../common';
 import { ApiResponse } from './../types';
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -12,15 +12,13 @@ export class AuthProvider {
 
     constructor(private http: Http) { }
 
-    private response: ApiResponse<string>;
-    async getToken(): Promise<ApiResponse<string>> {
+    getToken(): Observable<ApiResponse<string>> {
         const query = `${config.URL}/auth/`;
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });
         const body = { 'password': config.password };
         return this.http.post(query, body, options)
-        .toPromise()
-            .then((response: Response) => this.response = response.json())
+            .map((response: Response) => response.json())
             .catch(err => this.handleError(err));
     }
 
