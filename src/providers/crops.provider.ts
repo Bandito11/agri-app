@@ -27,7 +27,7 @@ export class CropProvider {
             .map((response: Response) => response.json())
             .catch(err => this.handleError(err));
     }
-    private handleError(error: ApiResponse<undefined>) {
+    private handleError(error) {
         console.error(error);
         return Observable.throw(error);
     }

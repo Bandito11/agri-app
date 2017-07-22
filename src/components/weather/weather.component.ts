@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { WeatherProvider } from './../../providers/weather.provider';
-import { Calendar } from './../../types';
+import { Calendar, Coordinates } from './../../types';
 
 /*
     TODO:

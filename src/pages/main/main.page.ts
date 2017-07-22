@@ -3,7 +3,7 @@ import { Slides } from 'ionic-angular';
 import { Calendar, Coordinates } from './../../types';
 import { weekDaysHeader, monthsLabels } from './../../labels'
 import { AuthProvider } from './../../providers/auth.provider';
-import { LocationProvider } from './../../providers/location.provider';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'page-main',
@@ -13,7 +13,7 @@ export class MainPage implements OnInit {
 
   constructor(
     private authProvider: AuthProvider,
-    private locationProvider: LocationProvider
+    private geolocation: Geolocation
   ) { }
 
   @ViewChild(Slides) slides: Slides;
@@ -44,16 +44,21 @@ export class MainPage implements OnInit {
       response => {
         this.token = response.token;
       },
-      error => this.getToken()
-      );
+      error => this.handleError(error));
   }
-  async getLocation() {
-    try {
-      const location = await this.locationProvider.getLocation();
-      this.location = location;
-    } catch (error) {
-      this.getLocation();
-    }
+  getLocation() {
+    this.geolocation.getCurrentPosition()
+      .then(resp => {
+        let coordinates: Coordinates = { latitude: 0, longitude: 0 };
+        coordinates.latitude = resp.coords.latitude;
+        coordinates.longitude = resp.coords.longitude;
+        this.location = coordinates;console.log(this.location)
+      })
+      .catch(error => this.handleError(error));
+  }
+
+  handleError(error) {
+    console.error(error);
   }
   /**
    * 

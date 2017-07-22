@@ -1,7 +1,7 @@
 {
     "name": "agri-app",
     "author": "Esteban Morales",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "homepage": "https://github.com/Bandito11/agri-app#readme",
     "description": "An Ionic project",
     "private": true,

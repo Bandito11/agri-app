@@ -13,7 +13,6 @@ import { WeatherComponent } from '../components/weather/weather.component';
 import { CropsComponent } from '../components/crops/crops.component';
 import { MoonPhaseProvider } from '../providers/moonphase.provider';
 import { WeatherProvider } from '../providers/weather.provider';
-import { LocationProvider } from '../providers/location.provider';
 import { CropProvider } from '../providers/crops.provider';
 import { NoprodComponent } from '../components/noproduction/noproduction.component';
 import { AbundanceComponent } from '../components/abundance/abundance.component';
@@ -47,7 +46,6 @@ import { AuthProvider } from '../providers/auth.provider';
   providers: [
     MoonPhaseProvider,
     WeatherProvider,
-    LocationProvider,
     CropProvider,
     StatusBar,
     SplashScreen,
