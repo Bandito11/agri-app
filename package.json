@@ -1,8 +1,7 @@
 {
-    "name": "agri-app",
+    "name": "anemone-app",
     "author": "Esteban Morales",
-    "version": "0.8.1",
-    "homepage": "https://github.com/Bandito11/agri-app#readme",
+    "version": "0.5.0",
     "description": "An Ionic project",
     "private": true,
     "scripts": {
