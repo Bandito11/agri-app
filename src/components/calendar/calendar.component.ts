@@ -29,7 +29,10 @@ export class CalendarComponent implements OnInit {
   /**Used to get the year to start the calendar*/
   private year: number;
 
-  /**Date chosen by the user to be shown in the card Header*/
+  /**
+   * Date chosen by the user to be shown in the card Header
+   * Will return a value of Calendar
+   * */
   @Output() getDate = new EventEmitter();
 
   /**Used to generate calendar*/
